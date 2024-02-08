@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Sistema Patrimonio')
 
 @section('content_header')
     <h1>Patrimonio</h1>
@@ -8,7 +8,8 @@
 
 @section('content')
     <p>Sistema de Gestion de Activos Patrimoniales</p>
-<x-adminlte-input name="iBasic"/>
+    <x-adminlte-input name="iBasic"/>
+    <x-adminlte-card></x-adminlte-card>
 @stop
 
 @section('css')
