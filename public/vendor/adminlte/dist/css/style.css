@@ -1,0 +1,44 @@
+/* Login */
+body {
+    background-color: #153757;
+}
+h1 {
+    color: #ffffff;
+}
+
+#img_index {
+    border-radius: 160px;
+    position: relative;
+    align-self: center;
+    height: 105px;
+    width: 105px;
+    color: #ffffff;
+    box-shadow: 0px 0px 30px 0px #a1a1a1;
+    margin-top: 5%;
+}
+#card_index {
+    width: 550px;
+    height: 450px;
+    background: white;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-box-shadow: 1px 1px 12px #000;
+    box-shadow: 1px 1px 20px #000;
+}
+#login {
+    width: 90%;
+    align-self: center;
+}
+.input-group {
+    margin: 0px auto;
+}
+#login {
+    width: 90%;
+    align-self: center;
+}
