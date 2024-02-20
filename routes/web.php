@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\AuthController;
+use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +23,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::post('/log', [AuthenticatedSessionController::class, 'store'])->name('login');
+Route::post('/custom-login', [AuthController::class, 'login'])->name('custom-login');
 //Route::get('/dashboard', [AdminController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
