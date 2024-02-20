@@ -1,23 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INICIO DE SESION</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="vendor/adminlte/dist/css/style.css">
-    <link rel="icon" href="vendor/adminlte/dist/img/logo.ico" type="image/x-icon">
-</head>
+<title>INICIO DE SESION</title>
+@include('components.head-login')
 
 <body>
-
     <div class="card shadow" id="card_index">
-
         <img id="img_index" src='vendor/adminlte/dist/img/logo_aguas.png' alt="">
         <br>
         <h1 class="h2">AGUAS DE MÉRIDA, C.A</h1>
@@ -36,9 +24,8 @@
                         </svg>
                         <span>
                 </div>
-                <input type="text" class="form-control" required id="email" class="block mt-1 w-full"
-                    type="email" name="email" :value="old('email')" autofocus autocomplete="username"
-                    placeholder="Correo">
+                <input type="text" class="form-control" class="block mt-1 w-full" type="email" name="email"
+                    :value="old('email')" autofocus autocomplete="username" placeholder="Correo" required>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -51,11 +38,13 @@
                     </span>
                 </div>
                 <input for="password" :value="__('Password')" type="password" class="form-control"
-                    placeholder="Contraseña" name="password" required autocomplete="current-password">
+                    placeholder="Contraseña" name="password" autocomplete="current-password" required>
             </div>
+            <!-- <x-input-error :messages="$errors->get('password')" class="mt-2" />-->
             <button type="submit" class="btn btn-dark w-100 mb-3 shadow" name="login" value="login"
                 style="background-color: #153757; font-weight: bold">{{ __('Iniciar Sesion') }}</button>
         </form>
+
     </div>
 
 </body>
