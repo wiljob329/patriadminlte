@@ -8,7 +8,7 @@
 
 @section('content')
     <p>Sistema de Gestion de Activos Patrimoniales</p>
-    <x-adminlte-input name="iBasic"/>
+    <x-adminlte-input name="iBasic" />
 @stop
 
 @section('css')
@@ -16,5 +16,7 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+        console.log('Hi!');
+    </script>
 @stop
