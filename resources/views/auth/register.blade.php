@@ -35,7 +35,7 @@
                         <span>
                 </div>
                 <input class="form-control" id="email" class="block mt-1 w-full" type="email" name="email"
-                    :value="old('email')" required autocomplete="username" placeholder="Correo">
+                    :value="old('email')" autocomplete="username" placeholder="Correo">
             </div>
 
             <div class="input-group mb-3">
@@ -70,12 +70,12 @@
             <div class="flex items-center justify-end mt-2">
                 <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                     href="{{ route('login') }}">
-                    {{ __('Ya posees cuenta?') }}
+                    {{ __('¿Ya estás registrado?') }}
                 </a>
-                <button type="submit" class="btn btn-dark w-100 mb-3 shadow" name="login" value="login"
-                    style="background-color: #153757; font-weight: bold">{{ __('Registrarse') }}
-                </button>
             </div>
+            <button type="submit" class="btn btn-dark w-100 mb-3 shadow" name="login" value="login"
+                style="background-color: #153757; font-weight: bold">{{ __('Registrarse') }}
+            </button>
         </form>
     </div>
 </body>
