@@ -29,6 +29,8 @@ Route::post('/custom-login', [AuthController::class, 'login'])->name('custom-log
 Route::get('/activos', [ActivosController::class, 'index']);
 //Route::get('/dashboard', [AdminController::class, 'index']);
 
+Route::get('/activos', [ActivosController::class, 'index']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
