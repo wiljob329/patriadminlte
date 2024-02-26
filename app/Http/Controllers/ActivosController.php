@@ -14,23 +14,27 @@ class ActivosController extends Controller
      */
     public function index(Request $request)
     {
-        //$model = Activo::query();
-            //$data = DB::table('activos')->latest()->get();
-        //return DataTables::of($model)->toJson();
-        //
         if($request->ajax()){
             $data = DB::table('activos')->latest()->get();
             return DataTables::of($data)
-                ->setRowId('codigo')
+                // ->setRowId('codigo')
+                ->addIndexColumn()
                 ->addColumn('acciones',function($row){
-                    $acciones = '<nobr><button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                    <i class="fa fa-lg fa-fw fa-pen"></i>
-                </button><button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+                    
+                    $btn = '<nobr>';
+                    /*$showButton = '<form class="d-inline" action="/activos/'.$row->codigo.' method="GET" ><button type="submit" class="btn btn-xs btn-default text-primary mx-1 shadow" data-toggle="modal" data-target="#modalEdit" title="Edit">
+                    <i class="fa fa-lg fa-fw fa-pen"></i></button></form>';*/
+                    
+                    //$editButton = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" id="row-data" data-toggle="modal" data-target="#modalEdit" data-row="'.json_encode($row).'" title="Edit">
+                    //<i class="fa fa-lg fa-fw fa-pen"></i></button>';
+                    $editButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'. route('activos.show', array($row->codigo)).'"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
+                    $btn .= $editButton.'</nobr>';
+                    $acciones = '<nobr><button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
                     <i class="fa fa-lg fa-fw fa-trash"></i>
                   </button><button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
                         <i class="fa fa-lg fa-fw fa-eye"></i>
                     </button> </nobr>';
-                    return $acciones;
+                    return $btn;
                 })
                 ->rawColumns(['acciones'])
                 ->make(true);
@@ -56,15 +60,17 @@ class ActivosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Activo $activo)
+    public function show($codigo)
     {
-        //
+        $activo = Activo::findOrFail($codigo);
+        //return redirect()->route('dashboard', compact('activo'));
+        return response()->json($activo);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Activo $activo)
+    public function edit($codigo)
     {
         //
     }

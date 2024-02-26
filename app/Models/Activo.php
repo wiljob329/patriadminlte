@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Activo extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'codigo';
     protected $guarded = [];
 }

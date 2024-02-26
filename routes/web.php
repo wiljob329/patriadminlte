@@ -24,12 +24,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::post('/log', [AuthenticatedSessionController::class, 'store'])->name('login');
-Route::post('/custom-login', [AuthController::class, 'login'])->name('custom-login');
-Route::get('/activos', [ActivosController::class, 'index']);
+Route::resource('activos', ActivosController::class);
 //Route::get('/dashboard', [AdminController::class, 'index']);
 
-Route::get('/activos', [ActivosController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

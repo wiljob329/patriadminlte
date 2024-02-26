@@ -27,6 +27,10 @@
             </x-adminlte-card>
         </div>
     </div>
+{{-- Modal para editar el activo --}}
+<x-adminlte-modal id="modalEdit" title="Editar Activo" size="lg" theme="navy" icon="fa fa-lg fa-fw fa-pen" v-centered static-backdrop>
+    <h1 class="text-center"></h1>
+</x-adminlte-modal>
 @stop
 
 @section('css')
@@ -36,37 +40,5 @@
 @section('js')
 
     <script src="js/datatables.min.js"></script>
-    <script> 
-    
-     $(function () {
-        var table = $('.yajra-datatable').DataTable({
-            processing: true,
-            serverSide: true,
-            selected: true,
-            ajax: "{{ url('activos') }}",
-            columns: [
-                {data: 'codigo', name: 'codigo'},
-                {data: 'modelo', name: 'modelo'},
-                {data: 'descripcion', name: 'descripcion'},
-                {data: 'estado', name: 'estado'},
-                {data: 'fecha_adquisicion', name: 'fecha_adquisicion'},
-                {
-                    data: 'acciones', 
-                    name: 'acciones', 
-                    orderable: false, 
-                    searchable: false
-                },
-            ]
-        });
-        $('.yajra-datatable tbody').on('click', 'tr', function () {
-            if ($(this).hasClass('selected')) {
-                $(this).removeClass('selected');
-            }
-            else {
-                table.$('tr.selected').removeClass('selected');
-                $(this).addClass('selected');
-            }
-        });
-    });
-    </script>
+    @vite('resources/js/app.js')
 @stop
