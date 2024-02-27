@@ -3,13 +3,19 @@
 @section('title', 'Sistema Patrimonio')
 
 @section('content_header')
-    <h1>Patrimonio</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <x-adminlte-button class="w-auto h-auto" label="Agregar Activo" theme="primary" icon="fas fa-plus" />
+        </div>
+    </div>
 @stop
 
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <x-adminlte-card title="Activos Aguas de Mérida" theme="dark">
+            <x-adminlte-card title="Activos Aguas de Mérida" theme="dark" class="elevation-3">
+                <x-slot name="toolSlot">
+                </x-slot>
                 <table class="table  yajra-datatable" style="padding-top:10px;">
                     <thead class="">
                         <tr>
@@ -27,10 +33,15 @@
             </x-adminlte-card>
         </div>
     </div>
-{{-- Modal para editar el activo --}}
-<x-adminlte-modal id="modalEdit" title="Editar Activo" size="lg" theme="navy" icon="fa fa-lg fa-fw fa-pen" v-centered static-backdrop>
-    <h1 class="text-center"></h1>
-</x-adminlte-modal>
+    {{-- Modal para editar el activo --}}
+    <x-adminlte-modal id="modalEdit" title="Editar Activo" size="lg" theme="navy" icon="fa fa-lg fa-fw fa-pen"
+        v-centered static-backdrop>
+        <h1 class="text-center"></h1>
+    </x-adminlte-modal>
+    <x-adminlte-modal id="modalShow" title="Mostrar Activo" size="lg" theme="navy" icon="fa fa-lg fa-fw fa-eye"
+        v-centered static-backdrop>
+        <h1 class="text-center"></h1>
+    </x-adminlte-modal>
 @stop
 
 @section('css')

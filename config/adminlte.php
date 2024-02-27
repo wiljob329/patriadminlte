@@ -110,7 +110,7 @@ return [
         'enabled' => true,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/aguamerca_logo.png',
-            'alt' => 'AdminLTE Preloader Image',
+            'alt' => 'Aguas de merida Patrimonio',
             'effect' => 'animation__shake',
             'width' => 100,
             'height' => 100,

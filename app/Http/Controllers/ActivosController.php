@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Activo;
+use Exception;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
+
 
 class ActivosController extends Controller
 {
@@ -22,18 +25,20 @@ class ActivosController extends Controller
                 ->addColumn('acciones',function($row){
                     
                     $btn = '<nobr>';
-                    /*$showButton = '<form class="d-inline" action="/activos/'.$row->codigo.' method="GET" ><button type="submit" class="btn btn-xs btn-default text-primary mx-1 shadow" data-toggle="modal" data-target="#modalEdit" title="Edit">
-                    <i class="fa fa-lg fa-fw fa-pen"></i></button></form>';*/
+                    $deleteButton = '<form class="d-inline" action="/activos/'.$row->codigo.'" method="POST" >
+                    <input type="hidden" name="_token" value='.csrf_token().'>
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Borrar">
+                    <i class="fa fa-lg fa-fw fa-trash"></i></button></form>';
                     
                     //$editButton = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" id="row-data" data-toggle="modal" data-target="#modalEdit" data-row="'.json_encode($row).'" title="Edit">
                     //<i class="fa fa-lg fa-fw fa-pen"></i></button>';
-                    $editButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'. route('activos.show', array($row->codigo)).'"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
-                    $btn .= $editButton.'</nobr>';
-                    $acciones = '<nobr><button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
-                    <i class="fa fa-lg fa-fw fa-trash"></i>
-                  </button><button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-                        <i class="fa fa-lg fa-fw fa-eye"></i>
-                    </button> </nobr>';
+                    $editButton = '<a href="javascript:void(0)" id="editActivo"  data-url="'. route('activos.show', array($row->codigo)).'"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
+                    $btn .= $editButton;
+                    //$deleteButton = '<a href="javascript:void(0)" id="deleteActivo"  data-url="'. route('activos.show', array($row->codigo)).'"  class="btn btn-xs btn-default text-danger mx-1 shadow"><i class="fa fa-lg fa-fw fa-trash"></i></a>';
+                    $btn .= $deleteButton;
+                    $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'. route('activos.show', array($row->codigo)).'"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
+                    $btn .= $showButton.'</nobr>';
                     return $btn;
                 })
                 ->rawColumns(['acciones'])
@@ -63,7 +68,6 @@ class ActivosController extends Controller
     public function show($codigo)
     {
         $activo = Activo::findOrFail($codigo);
-        //return redirect()->route('dashboard', compact('activo'));
         return response()->json($activo);
     }
 
@@ -86,8 +90,18 @@ class ActivosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Activo $activo)
+    public function destroy($codigo)
     {
         //
+        try {
+            $activoAEliminar = Activo::findOrFail($codigo);
+            $activoAEliminar->delete();
+            Alert::error('Exito!', 'Activo eliminado con exito');
+            return redirect()->route('dashboard');
+        }catch(Exception $ex){
+            Alert::warning('Error','No se pudo eliminar el activo');
+            return redirect()->route('dashboard');
+        }
+        
     }
 }

@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::resource('activos', ActivosController::class);
+Route::resource('activos', ActivosController::class)->middleware(['auth', 'verified']);
 //Route::get('/dashboard', [AdminController::class, 'index']);
 
 
