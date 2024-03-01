@@ -3,18 +3,16 @@
 @section('title', 'Sistema Patrimonio')
 
 @section('content_header')
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <x-adminlte-button class="w-auto h-auto" label="Agregar Activo" theme="primary" icon="fas fa-plus" />
-        </div>
-    </div>
 @stop
 
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <x-adminlte-card title="Activos Aguas de Mérida" theme="dark" class="elevation-3">
-                <x-slot name="toolSlot">
+            <x-adminlte-card title="Activos Aguas de Mérida" theme="dark" class="elevation-3 mt-4">
+                <x-slot name="toolsSlot">
+                    <a href="{{ route('activos.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar
+                        Activo</a>
+                    {{-- <x-adminlte-button label="Agregar Activo" theme="success" icon="fas fa-lg fa-plus" /> --}}
                 </x-slot>
                 <table class="table  yajra-datatable" style="padding-top:10px;">
                     <thead class="">
@@ -49,7 +47,5 @@
 @stop
 
 @section('js')
-
     <script src="js/datatables.min.js"></script>
-    @vite('resources/js/app.js')
 @stop

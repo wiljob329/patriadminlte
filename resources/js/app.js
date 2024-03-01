@@ -1,4 +1,4 @@
-//import './bootstrap';
+import "./bootstrap";
 
 //import Alpine from 'alpinejs';
 
@@ -15,7 +15,6 @@ $(function () {
         serverSide: true,
         selected: true,
         responsive: true,
-        //ajax: "{{ url('activos') }}",
         ajax: "activos",
         columns: [
             { data: "codigo", name: "codigo" },

@@ -31,11 +31,8 @@ class ActivosController extends Controller
                     <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Borrar">
                     <i class="fa fa-lg fa-fw fa-trash"></i></button></form>';
                     
-                    //$editButton = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" id="row-data" data-toggle="modal" data-target="#modalEdit" data-row="'.json_encode($row).'" title="Edit">
-                    //<i class="fa fa-lg fa-fw fa-pen"></i></button>';
                     $editButton = '<a href="javascript:void(0)" id="editActivo"  data-url="'. route('activos.show', array($row->codigo)).'"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
                     $btn .= $editButton;
-                    //$deleteButton = '<a href="javascript:void(0)" id="deleteActivo"  data-url="'. route('activos.show', array($row->codigo)).'"  class="btn btn-xs btn-default text-danger mx-1 shadow"><i class="fa fa-lg fa-fw fa-trash"></i></a>';
                     $btn .= $deleteButton;
                     $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'. route('activos.show', array($row->codigo)).'"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
                     $btn .= $showButton.'</nobr>';
@@ -43,6 +40,7 @@ class ActivosController extends Controller
                 })
                 ->rawColumns(['acciones'])
                 ->make(true);
+                Alert::success('Success', 'show datatable');
         }
     }
 
@@ -52,6 +50,7 @@ class ActivosController extends Controller
     public function create()
     {
         //
+        return view("activos.activos-add");
     }
 
     /**
@@ -60,6 +59,8 @@ class ActivosController extends Controller
     public function store(Request $request)
     {
         //
+        
+        return $request;
     }
 
     /**
@@ -92,7 +93,7 @@ class ActivosController extends Controller
      */
     public function destroy($codigo)
     {
-        //
+        
         try {
             $activoAEliminar = Activo::findOrFail($codigo);
             $activoAEliminar->delete();
@@ -103,5 +104,7 @@ class ActivosController extends Controller
             return redirect()->route('dashboard');
         }
         
+        // $activoEliminar = Activo::findOrFail($codigo);
+        // return $activoEliminar;
     }
 }
