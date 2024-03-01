@@ -50,7 +50,6 @@
             <button type="submit" class="btn btn-dark w-100 mb-3 shadow" name="login" value="login"
                 style="background-color: #153757; font-weight: bold">{{ __('Iniciar Sesion') }}</button>
         </form>
-
     </div>
 
 </body>

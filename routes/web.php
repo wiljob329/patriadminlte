@@ -23,9 +23,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::post('/log', [AuthenticatedSessionController::class, 'store'])->name('login');
-Route::post('/custom-login', [AuthController::class, 'login'])->name('custom-login');
-//Route::get('/dashboard', [AdminController::class, 'index']);
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

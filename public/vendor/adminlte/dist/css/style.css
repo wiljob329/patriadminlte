@@ -2,6 +2,7 @@
 body {
     background-color: #153757;
 }
+
 h1 {
     color: #ffffff;
 }
@@ -13,7 +14,7 @@ h1 {
     height: 105px;
     width: 105px;
     color: #ffffff;
-    box-shadow: 0px 0px 30px 0px #a1a1a1;
+    box-shadow: 0px 0px 30px 0px #504f4f;
     margin-top: 5%;
 }
 #card_index {
@@ -29,7 +30,7 @@ h1 {
     transform: translate(-50%, -50%);
     transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     -webkit-box-shadow: 1px 1px 12px #000;
-    box-shadow: 1px 1px 20px #000;
+    box-shadow: 1px 1px 25px #000;
 }
 #login {
     width: 90%;
