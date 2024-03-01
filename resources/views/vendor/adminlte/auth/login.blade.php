@@ -38,12 +38,6 @@
                 </div>
                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                     value="{{ old('email') }}" placeholder="Correo" autofocus>
-
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ 'Este campo es obligatorio' }}</strong>
-                    </span>
-                @enderror
             </div>
 
             {{-- Contraseña --}}
@@ -58,11 +52,6 @@
                 </div>
                 <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                     placeholder="Contraseña">
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ 'Este campo es obligatorio' }}</strong>
-                    </span>
-                @enderror
             </div>
 
             @if ($register_url)
