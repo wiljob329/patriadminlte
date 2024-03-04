@@ -1,6 +1,11 @@
 /* Login */
 body {
-    background-color: #153757;
+    background: rgb(21, 55, 87);
+    background: linear-gradient(
+        rgba(21, 55, 87, 1) 0%,
+        rgba(7, 55, 101, 1) 62%,
+        rgba(40, 95, 147, 1) 99%
+    );
 }
 
 h1 {
