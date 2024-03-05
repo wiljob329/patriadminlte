@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ActivoRequest;
 use Illuminate\Support\Facades\DB;
 use App\Models\Activo;
 use Exception;
@@ -40,7 +41,6 @@ class ActivosController extends Controller
                 })
                 ->rawColumns(['acciones'])
                 ->make(true);
-                Alert::success('Success', 'show datatable');
         }
     }
 
@@ -56,10 +56,9 @@ class ActivosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ActivoRequest $request)
     {
         //
-        
         return $request;
     }
 

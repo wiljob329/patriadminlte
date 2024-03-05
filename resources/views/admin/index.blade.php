@@ -32,13 +32,13 @@
         </div>
     </div>
     {{-- Modal para editar el activo --}}
-    <x-adminlte-modal id="modalEdit" title="Editar Activo" size="lg" theme="navy" icon="fa fa-lg fa-fw fa-pen"
+    <x-adminlte-modal id="modalEdit" title="Editar Activo" size="lg" theme="light" icon="fa fa-lg fa-fw fa-pen"
         v-centered static-backdrop>
         <h1 class="text-center"></h1>
     </x-adminlte-modal>
-    <x-adminlte-modal id="modalShow" title="Mostrar Activo" size="lg" theme="navy" icon="fa fa-lg fa-fw fa-eye"
+    <x-adminlte-modal id="modalShow" title="Mostrar Activo" size="lg" theme="light" icon="fa fa-lg fa-fw fa-eye"
         v-centered static-backdrop>
-        <h1 class="text-center"></h1>
+        <x-form.activo-form id="activo_show" />
     </x-adminlte-modal>
 @stop
 
