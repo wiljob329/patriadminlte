@@ -14,7 +14,7 @@
                         Volver
                     </a>
                 </x-slot>
-                <x-form.activo-form action="{{ route('activos.store') }}" id="activo_save" method="POST" />
+                <x-form.activo-form action="{{ route('activos.store') }}" id="activo_save" method="POST" editar />
                 <x-slot name="footerSlot">
                     <x-adminlte-button id="activo_submit" form="activo_save" class="d-flex ml-auto" theme="primary"
                         label="Guardar" icon="fas fa-lg fa-save" type="submit" />

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ActivoRequest;
-use Illuminate\Support\Facades\DB;
 use App\Models\Activo;
 use Exception;
 use Illuminate\Http\Request;
@@ -19,9 +18,9 @@ class ActivosController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-            $data = DB::table('activos')->latest()->get();
+            $data  =  Activo::all();
             return DataTables::of($data)
-                // ->setRowId('codigo')
+                // ->setRowId('id')
                 ->addIndexColumn()
                 ->addColumn('acciones',function($row){
                     

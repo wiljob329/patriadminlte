@@ -12,7 +12,6 @@
                 <x-slot name="toolsSlot">
                     <a href="{{ route('activos.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar
                         Activo</a>
-                    {{-- <x-adminlte-button label="Agregar Activo" theme="success" icon="fas fa-lg fa-plus" /> --}}
                 </x-slot>
                 <table class="table  yajra-datatable" style="padding-top:10px;">
                     <thead class="">
@@ -22,7 +21,7 @@
                             <th>Descripcion</th>
                             <th>Estado</th>
                             <th>Fecha Adquisicion</th>
-                            <th>Action</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,11 +33,11 @@
     {{-- Modal para editar el activo --}}
     <x-adminlte-modal id="modalEdit" title="Editar Activo" size="lg" theme="light" icon="fa fa-lg fa-fw fa-pen"
         v-centered static-backdrop>
-        <h1 class="text-center"></h1>
+        <x-form.activo-form id="activo_editar" editar />
     </x-adminlte-modal>
     <x-adminlte-modal id="modalShow" title="Mostrar Activo" size="lg" theme="light" icon="fa fa-lg fa-fw fa-eye"
         v-centered static-backdrop>
-        <x-form.activo-form id="activo_show" />
+        <x-form.activo-form id="activo_show" show />
     </x-adminlte-modal>
 @stop
 
