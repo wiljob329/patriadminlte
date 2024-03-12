@@ -29,7 +29,6 @@
         {{-- <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}"> --}}
         @vite('public/vendor/adminlte/dist/css/adminlte.css')
         @vite('resources/css/app.css')
-        @include('sweetalert::alert')
 
         @if (config('adminlte.google_fonts.allowed', true))
             <link rel="stylesheet"
@@ -110,7 +109,7 @@
     @yield('adminlte_js')
 
     @vite('resources/js/app.js')
-
+    @include('sweetalert::alert')
 </body>
 
 </html>

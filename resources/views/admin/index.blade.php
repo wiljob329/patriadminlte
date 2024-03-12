@@ -8,12 +8,12 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <x-adminlte-card title="Activos Aguas de Mérida" theme="dark" class="elevation-3 mt-4">
+            <x-adminlte-card title="Activos Aguas de Mérida" theme="dark" class="mt-4 elevation-3">
                 <x-slot name="toolsSlot">
                     <a href="{{ route('activos.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar
                         Activo</a>
                 </x-slot>
-                <table class="table  yajra-datatable" style="padding-top:10px;">
+                <table class="table yajra-datatable" style="padding-top:10px;">
                     <thead class="">
                         <tr>
                             <th>Codigo</th>
