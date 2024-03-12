@@ -43511,7 +43511,7 @@ a.disabled.mailbox-attachment-close {
     background-color: #6c757d;
 }
 
-.login-logo,
+/*.login-logo,
 .register-logo {
     font-size: 2.1rem;
     font-weight: 300;
@@ -43523,7 +43523,7 @@ a.disabled.mailbox-attachment-close {
 .register-logo a {
     color: #495057;
 }
-
+*/
 .login-page,
 .register-page {
     -ms-flex-align: center;
