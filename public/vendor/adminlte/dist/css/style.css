@@ -1,6 +1,12 @@
 /* Login */
 body {
-    background-color: #153757;
+    /* background-color: #153757; */
+    background-color: rgb(21, 55, 87);
+    background: linear-gradient(
+        rgba(21, 55, 81, 1) 0%,
+        rgba(7, 55, 101, 1) 62%,
+        rgba(40, 95, 147, 1) 99%
+        );
 }
 h1 {
     color: #ffffff;
@@ -14,9 +20,7 @@ h1 {
     width: 105px;
     color: #ffffff;
     box-shadow: 0px 0px 30px 0px #a1a1a1;
-/* ======= */
-/*     box-shadow: 0px 0px 30px 0px #504f4f; */
-/* >>>>>>> DJ */
+    box-shadow: 0px 0px 30px 0px #504f4f;
     margin-top: 5%;
 }
 #card_index {

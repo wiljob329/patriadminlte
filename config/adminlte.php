@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => 'Sistema<b>Patrimonio</b>',
+    'logo' => '<b>SistemaPatrimonio</b>',
     'logo_img' => 'vendor/adminlte/dist/img/aguamerca_logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'Aguas de Merida',
 
     /*
     |--------------------------------------------------------------------------
@@ -192,7 +192,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-info elevation-4',
+    'classes_sidebar' => 'sidebar-dark-success elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -326,17 +326,17 @@ return [
                 [
                     'text' => 'Activos',
                     'url' => 'activos',
-                ]
-            ]
+                ],
+            ],
         ],
         [
             'text' => 'Modulo Responsables',
-            'url'  => 'llgin',
+            'url' => 'llgin',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'Modulo Movimientos',
-            'url'  => 'admin/settings',
+            'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-random',
         ],
         // [
@@ -484,6 +484,27 @@ return [
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
                 ],
             ],
+        ],
+        'TempusDominusBs4' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
+                ],
+            ],
+
         ],
         'Pace' => [
             'active' => false,

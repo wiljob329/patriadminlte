@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Activo;
 
 class AdminController extends Controller
 {
     //
     public function index()
     {
-        return view('admin.index');
+        $activos = Activo::count();
+
+        return view('admin.index', ['activos' => $activos]);
     }
 }

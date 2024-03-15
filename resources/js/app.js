@@ -115,6 +115,7 @@ $(function () {
         let activoURL = $(this).data("url");
         $.get(activoURL, function (data) {
             fillForm(data, false, "");
+            console.log(data);
             $("#modalEdit").modal("show");
         });
     });

@@ -25,8 +25,21 @@
                 id="condicion" />
             <x-adminlte-input type="text" label="Adquisicion" name="adquisicion" fgroup-class="col"
                 placeholder="Adquisicion" id="adquisicion" />
-            <x-adminlte-input type="text" label="Fecha Adquisicion" name="fecha_adquisicion" fgroup-class="col"
-                placeholder="Fecha" id="fecha_adquisicion" />
+            @php
+                $config = [
+                    'format' => 'DD/MM/YYYY',
+                    'dayViewHeaderFormat' => 'MMM YYYY',
+                    'daysOfWeekDisabled' => [0, 6],
+                ];
+            @endphp
+            <x-adminlte-input-date name="fecha_adquisicion" label="Fecha Adquisicion" :config="$config"
+                placeholder="Fecha Adquisicion" id="fecha_adquisicion" fgroup-class="col">
+                <x-slot name="appendSlot">
+                    <div class="input-group-text bg-gradient-primary">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </x-slot>
+            </x-adminlte-input-date>
             <x-adminlte-input type="text" label="Moneda" name="moneda" fgroup-class="col" placeholder="Moneda"
                 id="moneda" />
         </div>
@@ -42,10 +55,22 @@
         </div>
 
         <div class="form-row">
-            <x-adminlte-input type="text" label="Inicio Garantia" name="inicio_garantia" fgroup-class="col"
-                placeholder="Inicio Garantia" id="inicio_garantia" />
-            <x-adminlte-input type="text" label="Fin Garantia" name="fin_garantia" fgroup-class="col"
-                placeholder="Fin Garantia" id="fin_garantia" />
+            <x-adminlte-input-date name="inicio_garantia" label="Inicio Garantia" :config="$config"
+                placeholder="Inicio Garantia" id="inicio_garantia" fgroup-class="col">
+                <x-slot name="appendSlot">
+                    <div class="input-group-text bg-gradient-primary">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </x-slot>
+            </x-adminlte-input-date>
+            <x-adminlte-input-date name="fin_garantia" label="Fin Garantia" :config="$config" placeholder="Fin Garantia"
+                id="fin_garantia" fgroup-class="col">
+                <x-slot name="appendSlot">
+                    <div class="input-group-text bg-gradient-primary">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </x-slot>
+            </x-adminlte-input-date>
             <x-adminlte-input type="text" label="Categoria" name="categoriaesp" fgroup-class="col"
                 placeholder="Categoria" id="categoriaesp" />
             <x-adminlte-input type="text" label="Asignado" name="asignado" fgroup-class="col" placeholder="Asignado"
