@@ -16,45 +16,35 @@ class ActivosController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            // $data = Activo::all();
-            //
-            // return DataTables::of($data)
-            //     // ->setRowId('id')
-            //     ->addIndexColumn()
-            //     ->addColumn('acciones', function ($row) {
-            //
-            //         $btn = '<nobr>';
-            //         $deleteButton = '<form class="d-inline" action="/activos/'.$row->codigo.'" method="POST" >
-            //         <input type="hidden" name="_token" value='.csrf_token().'>
-            //         <input type="hidden" name="_method" value="delete">
-            //         <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Borrar">
-            //         <i class="fa fa-lg fa-fw fa-trash"></i></button></form>';
-            //
-            //         $editButton = '<a href="javascript:void(0)" id="editActivo"  data-url="'.route('activos.show', [$row->codigo]).'"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
-            //         $btn .= $editButton;
-            //         $btn .= $deleteButton;
-            //         $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'.route('activos.show', [$row->codigo]).'"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
-            //         $btn .= $showButton.'</nobr>';
-            //
-            //         return $btn;
-            //     })
-            //     ->rawColumns(['acciones'])
-            //     ->make(true);
-            //
-            // return dd(DataTables::of($data)->toJson());
+            $data = Activo::all();
+
+            return DataTables::of($data)
+                // ->setRowId('id')
+                ->addIndexColumn()
+                ->addColumn('acciones', function ($row) {
+
+                    $btn = '<nobr>';
+                    $deleteButton = '<form class="d-inline" action="/activos/'.$row->codigo.'" method="POST" >
+                    <input type="hidden" name="_token" value='.csrf_token().'>
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Borrar">
+                    <i class="fa fa-lg fa-fw fa-trash"></i></button></form>';
+
+                    $editButton = '<a href="javascript:void(0)" id="editActivo"  data-url="'.route('activos.show', [$row->codigo]).'"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
+                    $btn .= $editButton;
+                    $btn .= $deleteButton;
+                    $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'.route('activos.show', [$row->codigo]).'"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
+                    $btn .= $showButton.'</nobr>';
+
+                    return $btn;
+                })
+                ->rawColumns(['acciones'])
+                ->make(true);
+
+            return dd(DataTables::of($data)->toJson());
         }
 
-        $data = Activo::find(9)->actadquisicione;
-
-        return dd($data);
-        // $data = Activo::query();
-        //
-        // return dd(DataTables::eloquent($data)
-        //     ->with('actadqui', function () use ($data) {
-        //         return $data->actadquisicione;
-        //     })
-        //     ->toJson());
-        // return view('activos.activos', []);
+        return view('activos.activos', []);
     }
 
     /**
@@ -80,7 +70,9 @@ class ActivosController extends Controller
      */
     public function show($codigo)
     {
-        $activo = Activo::findOrFail($codigo);
+        $activo = Activo::find($codigo);
+        // $activo['adquisiciones'] = $activo->actadquisicione;
+        $activo->actadquisicione;
 
         return response()->json($activo);
     }
