@@ -24,8 +24,7 @@ class ActivosController extends Controller
                 ->addColumn('acciones', function ($row) {
 
                     $btn = '<nobr>';
-                    $deleteButton = '<form class="d-inline" action="/activos/'.$row->codigo.'" method="POST" >
-                    <input type="hidden" name="_token" value='.csrf_token().'>
+                    $deleteButton = '<form class="d-inline" action="/activos/'.$row->codigo.'" method="POST" > <input type="hidden" name="_token" value='.csrf_token().'>
                     <input type="hidden" name="_method" value="delete">
                     <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Borrar">
                     <i class="fa fa-lg fa-fw fa-trash"></i></button></form>';
@@ -71,7 +70,6 @@ class ActivosController extends Controller
     public function show($codigo)
     {
         $activo = Activo::find($codigo);
-        // $activo['adquisiciones'] = $activo->actadquisicione;
         $activo->actadquisicione;
 
         return response()->json($activo);

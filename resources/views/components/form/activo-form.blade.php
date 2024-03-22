@@ -23,8 +23,8 @@
         <div class="form-row">
             <x-adminlte-input type="text" label="Condicion" name="condicion" fgroup-class="col" placeholder="Condicion"
                 id="condicion" />
-            <x-adminlte-input type="text" label="Adquisicion" name="adquisicion" fgroup-class="col"
-                placeholder="Adquisicion" id="adquisicion" />
+            <x-adminlte-select name="adquisicion" fgroup-class="col" label="Adquisicion" id="adquisicion">
+            </x-adminlte-select>
             @php
                 $config = [
                     'format' => 'DD/MM/YYYY',

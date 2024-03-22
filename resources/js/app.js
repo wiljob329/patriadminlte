@@ -2,7 +2,21 @@ import "./bootstrap";
 
 //import Alpine from 'alpinejs';
 
+const adquisicionurl = "http://localhost:8000/api/adquisiciones";
 //window.Alpine = Alpine;
+function fillSelect(select, url) {
+    $.get(url, function (data) {
+        data.map((item) => {
+            select.append(
+                "<option value=" +
+                    item.descripcion +
+                    ">" +
+                    item.descripcion +
+                    "</option>",
+            );
+        });
+    });
+}
 
 //Alpine.start();
 function fillForm(data, condicion, visual) {
@@ -33,9 +47,16 @@ function fillForm(data, condicion, visual) {
     $("#observacion" + (visual === "show" ? visual : ""))
         .val(data.observacion)
         .attr("disabled", condicion);
-    $("#adquisicion" + (visual === "show" ? visual : ""))
-        .val(data.adquisicion_id)
-        .attr("disabled", condicion);
+    if (condicion) {
+        $("#adquisicion" + (visual === "show" ? visual : ""))
+            .val(data.actadquisicione.descripcion)
+            .attr("disabled", condicion);
+    } else {
+        fillSelect(
+            $("#adquisicion" + (visual === "show" ? visual : "")),
+            adquisicionurl,
+        );
+    }
     $("#fecha_adquisicion" + (visual === "show" ? visual : ""))
         .val(data.fecha_adquisicion)
         .attr("disabled", condicion);
@@ -72,51 +93,55 @@ function fillForm(data, condicion, visual) {
 }
 
 $(function () {
-    var table = $(".yajra-datatable").DataTable({
-        processing: true,
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-        },
-        serverSide: true,
-        selected: true,
-        responsive: true,
-        ajax: "activos",
-        columns: [
-            { data: "codigo", name: "codigo" },
-            { data: "modelo", name: "modelo" },
-            { data: "descripcion", name: "descripcion" },
-            { data: "estado", name: "estado" },
-            { data: "fecha_adquisicion", name: "fecha_adquisicion" },
-            {
-                data: "acciones",
-                name: "acciones",
-                orderable: false,
+    if ($("#card-datatable").length) {
+        var table = $(".yajra-datatable").DataTable({
+            processing: true,
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
-        ],
-    });
-    $(".yajra-datatable tbody").on("click", "tr", function () {
-        if ($(this).hasClass("selected")) {
-            $(this).removeClass("selected");
-            $(this).stopPropagation();
-        } else {
-            table.$("tr.selected").removeClass("selected");
-            $(this).addClass("selected");
-            $(this).stopPropagation();
-        }
-    });
-    $(".yajra-datatable tbody").on("click", "#showActivo", function () {
-        let activoURL = $(this).data("url");
-        $.get(activoURL, function (data) {
-            fillForm(data, true, "show");
-            $("#modalShow").modal("show");
+            serverSide: true,
+            selected: true,
+            responsive: true,
+            ajax: "activos",
+            columns: [
+                { data: "codigo", name: "codigo" },
+                { data: "modelo", name: "modelo" },
+                { data: "descripcion", name: "descripcion" },
+                { data: "estado", name: "estado" },
+                { data: "fecha_adquisicion", name: "fecha_adquisicion" },
+                {
+                    data: "acciones",
+                    name: "acciones",
+                    orderable: false,
+                },
+            ],
         });
-    });
-    $(".yajra-datatable tbody").on("click", "#editActivo", function () {
-        let activoURL = $(this).data("url");
-        $.get(activoURL, function (data) {
-            fillForm(data, false, "");
-            console.log(data);
-            $("#modalEdit").modal("show");
+        $(".yajra-datatable tbody").on("click", "tr", function () {
+            if ($(this).hasClass("selected")) {
+                $(this).removeClass("selected");
+                $(this).stopPropagation();
+            } else {
+                table.$("tr.selected").removeClass("selected");
+                $(this).addClass("selected");
+                $(this).stopPropagation();
+            }
         });
-    });
+        $(".yajra-datatable tbody").on("click", "#showActivo", function () {
+            let activoURL = $(this).data("url");
+            $.get(activoURL, function (data) {
+                fillForm(data, true, "show");
+                $("#modalShow").modal("show");
+            });
+        });
+        $(".yajra-datatable tbody").on("click", "#editActivo", function () {
+            let activoURL = $(this).data("url");
+            $.get(activoURL, function (data) {
+                fillForm(data, false, "");
+                $("#modalEdit").modal("show");
+            });
+        });
+    }
+    if ($("#activo_save").length) {
+        fillSelect($("#adquisicion"), adquisicionurl);
+    }
 });

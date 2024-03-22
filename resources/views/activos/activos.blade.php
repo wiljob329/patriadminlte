@@ -8,7 +8,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <x-adminlte-card title="Activos Aguas de Mérida" theme="dark" class="mt-4 elevation-3">
+            <x-adminlte-card title="Activos Aguas de Mérida" theme="dark" class="mt-4 elevation-3" id="card-datatable">
                 <x-slot name="toolsSlot">
                     <a href="{{ route('activos.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar
                         Activo</a>
