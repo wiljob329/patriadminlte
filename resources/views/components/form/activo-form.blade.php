@@ -72,7 +72,15 @@
                 </x-slot>
             </x-adminlte-input-date>
             <x-adminlte-input type="text" label="Categoria" name="categoriaesp" fgroup-class="col"
-                placeholder="Categoria" id="categoriaesp" />
+                placeholder="Categoria" id="categoriaesp">
+                <<x-slot name="prependSlot">
+                    <div class="input-group-text text-primary">
+                        <a href="#" data-toggle="modal" data-target="#categoriaModal">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                    </x-slot>
+            </x-adminlte-input>
             <x-adminlte-input type="text" label="Asignado" name="asignado" fgroup-class="col" placeholder="Asignado"
                 id="asignado" />
         </div>
@@ -146,5 +154,20 @@
         </div>
     @endisset
 
+    <x-adminlte-modal id="categoriaModal" title="Categorias" size="lg" theme="dark"
+        icon="fa fa-lg fa-fw fa-search" v-centered static-backdrop>
+        <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
+            <table class="table yajra-datatable" style="padding-top:10px;">
+                <thead>
+                    <tr>
+                        <th>Categoria especifica</th>
+                        <th>Categoria general</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </x-adminlte-card>
+    </x-adminlte-modal>
 
 </form>
