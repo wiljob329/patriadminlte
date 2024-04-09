@@ -2,6 +2,17 @@
 
 use App\Http\Controllers\ActAdquisicioneController;
 use App\Http\Controllers\ActCatespecificaController;
+use App\Http\Controllers\ActDesincorporacionController;
+use App\Http\Controllers\ActTipoController;
+use App\Http\Controllers\ActMarcaController;
+use App\Http\Controllers\ActCondicionController;
+use App\Http\Controllers\ActColorController;
+use App\Http\Controllers\ActDesincorporacion;
+
+
+
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +33,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/adquisiciones', [ActAdquisicioneController::class, 'index']);
 Route::get('/catespecifica', [ActCatespecificaController::class, 'index']);
+Route::get('/tipos', [ActTipoController::class, 'index']);
+Route::get('/marcas', [ActMarcaController::class, 'index']);
+Route::get('/condicion', [ActCondicionController::class, 'index']);
+Route::get('/color', [ActColorController::class, 'index']);
+Route::get('/desincorporacion', [ActDesincorporacionController::class, 'index']);

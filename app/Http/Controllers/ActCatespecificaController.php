@@ -15,6 +15,5 @@ class ActCatespecificaController extends Controller
         $catespecifica->actcatgeneral;
 
         return response()->json($catespecifica);
-
     }
 }
