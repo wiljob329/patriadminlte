@@ -14,14 +14,14 @@
 @endif
 
 @section('auth_header', __('adminlte::adminlte.register_message'))
-<div class="card shadow" id="card_register">
+<div class="shadow card" id="card_register">
 
     @section('auth_body')
         <form action="{{ $register_url }}" method="post" id="login">
             @csrf
 
             {{-- Name field --}}
-            <div class="input-group mb-3">
+            <div class="mb-3 input-group">
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -33,7 +33,7 @@
 
 
             {{-- Email field --}}
-            <div class="input-group mb-3">
+            <div class="mb-3 input-group">
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-envelope {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -45,7 +45,7 @@
 
 
             {{-- Password field --}}
-            <div class="input-group mb-3">
+            <div class="mb-3 input-group">
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -56,7 +56,7 @@
             </div>
 
             {{-- Confirm password field --}}
-            <div class="input-group mb-3">
+            <div class="mb-3 input-group">
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -75,10 +75,11 @@
                     </a>
                 </p>
             @endif
-            <button type="submit" class="btn btn-dark w-100 mb-3 shadow" name="login" value="login"
+            <button type="submit" class="mb-3 shadow btn btn-dark w-100" name="login" value="login"
                 style="background-color: #153757; font-weight: bold">{{ __('Registrarse') }}
             </button>
         </form>
-    </div>
+    @stop
+</div>
 
 @stop
