@@ -14058,8 +14058,12 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 [class*="sidebar-dark-"] {
     /*background-color: #343a40;*/
     /*background-color: #006600;*/
-    background: rgb(15,69,12);
-    background: linear-gradient(rgba(15,69,12,0.9598039899553571) 0%, rgba(30,135,23,1) 44%, rgba(54,171,55,1) 100%);
+    background: rgb(15, 69, 12);
+    background: linear-gradient(
+        rgba(15, 69, 12, 0.9598039899553571) 0%,
+        rgba(30, 135, 23, 1) 44%,
+        rgba(54, 171, 55, 1) 100%
+    );
 }
 
 [class*="sidebar-dark-"] .user-panel a:hover {
@@ -19022,7 +19026,7 @@ body.text-sm .control-sidebar {
 }
 
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header {
-    height: 175px;
+    height: 147px;
     padding: 10px;
     text-align: center;
 }
