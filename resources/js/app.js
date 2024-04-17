@@ -3,6 +3,11 @@ import "./bootstrap";
 //import Alpine from 'alpinejs';
 
 const adquisicionurl = "http://localhost:8000/api/adquisiciones";
+const tipourl = "http://localhost:8000/api/tipos";
+const condicionurl = "http://localhost:8000/api/condicion";
+const colorurl = "http://localhost:8000/api/color";
+const marcaurl = "http://localhost:8000/api/marcas";
+
 //window.Alpine = Alpine;
 function fillSelect(select, url) {
     $.get(url, function (data) {
@@ -12,7 +17,16 @@ function fillSelect(select, url) {
                     item.descripcion +
                     ">" +
                     item.descripcion +
-                    "</option>",
+                    "</option>"
+            );
+        });
+    });
+}
+function fillSelect2(select, url) {
+    $.get(url, function (data) {
+        data.map((item) => {
+            select.append(
+                "<option value=" + item.nombre + ">" + item.nombre + "</option>"
             );
         });
     });
@@ -23,9 +37,6 @@ function fillForm(data, condicion, visual) {
     $("#codigo" + (visual === "show" ? visual : ""))
         .val(data.codigo)
         .attr("disabled", condicion);
-    $("#marca" + (visual === "show" ? visual : ""))
-        .val(data.marca_id)
-        .attr("disabled", condicion);
     $("#modelo" + (visual === "show" ? visual : ""))
         .val(data.modelo)
         .attr("disabled", condicion);
@@ -35,15 +46,6 @@ function fillForm(data, condicion, visual) {
     $("#descripcion" + (visual === "show" ? visual : ""))
         .val(data.descripcion)
         .attr("disabled", condicion);
-    $("#condicion" + (visual === "show" ? visual : ""))
-        .val(data.condicion_id)
-        .attr("disabled", condicion);
-    $("#color" + (visual === "show" ? visual : ""))
-        .val(data.color_id)
-        .attr("disabled", condicion);
-    $("#tipo" + (visual === "show" ? visual : ""))
-        .val(data.tipo_id)
-        .attr("disabled", condicion);
     $("#observacion" + (visual === "show" ? visual : ""))
         .val(data.observacion)
         .attr("disabled", condicion);
@@ -51,10 +53,30 @@ function fillForm(data, condicion, visual) {
         $("#adquisicion" + (visual === "show" ? visual : ""))
             .val(data.actadquisicione.descripcion)
             .attr("disabled", condicion);
+        $("#tipo" + (visual === "show" ? visual : ""))
+            .val(data.act_tipo.nombre)
+            .attr("disabled", condicion);
+        $("#condicion" + (visual === "show" ? visual : ""))
+            .val(data.act_condicion.nombre)
+            .attr("disabled", condicion);
+        $("#color" + (visual === "show" ? visual : ""))
+            .val(data.act_color.descripcion)
+            .attr("disabled", condicion);
+        $("#marca" + (visual === "show" ? visual : ""))
+            .val(data.act_marca.nombre)
+            .attr("disabled", condicion);
     } else {
         fillSelect(
             $("#adquisicion" + (visual === "show" ? visual : "")),
-            adquisicionurl,
+            adquisicionurl
+        );
+        fillSelect($("#color" + (visual === "show" ? visual : "")), colorurl);
+
+        fillSelect2($("#marca" + (visual === "show" ? visual : "")), marcaurl);
+        fillSelect2($("#tipo" + (visual === "show" ? visual : "")), tipourl);
+        fillSelect2(
+            $("#condicion" + (visual === "show" ? visual : "")),
+            condicionurl
         );
     }
     $("#fecha_adquisicion" + (visual === "show" ? visual : ""))

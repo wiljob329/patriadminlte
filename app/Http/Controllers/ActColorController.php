@@ -18,10 +18,8 @@ class ActColorController extends Controller
         });
         return response()->json($marcasConActivos); */
 
-
-
-        $color = ActColor::find(5);
-        $color->activo;
+        $color = ActColor::all();
+        // $color->activo;
 
         return response()->json($color);
     }

@@ -24,16 +24,16 @@ class ActivosController extends Controller
                 ->addColumn('acciones', function ($row) {
 
                     $btn = '<nobr>';
-                    $deleteButton = '<form class="d-inline" action="/activos/'.$row->codigo.'" method="POST" > <input type="hidden" name="_token" value='.csrf_token().'>
+                    $deleteButton = '<form class="d-inline" action="/activos/' . $row->codigo . '" method="POST" > <input type="hidden" name="_token" value=' . csrf_token() . '>
                     <input type="hidden" name="_method" value="delete">
                     <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Borrar">
                     <i class="fa fa-lg fa-fw fa-trash"></i></button></form>';
 
-                    $editButton = '<a href="javascript:void(0)" id="editActivo"  data-url="'.route('activos.show', [$row->codigo]).'"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
+                    $editButton = '<a href="javascript:void(0)" id="editActivo"  data-url="' . route('activos.show', [$row->codigo]) . '"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
                     $btn .= $editButton;
                     $btn .= $deleteButton;
-                    $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'.route('activos.show', [$row->codigo]).'"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
-                    $btn .= $showButton.'</nobr>';
+                    $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="' . route('activos.show', [$row->codigo]) . '"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
+                    $btn .= $showButton . '</nobr>';
 
                     return $btn;
                 })
@@ -71,6 +71,13 @@ class ActivosController extends Controller
     {
         $activo = Activo::find($codigo);
         $activo->actadquisicione;
+        $activo->act_tipo;
+        $activo->act_condicion;
+        $activo->act_color;
+        $activo->act_marca;
+
+
+
 
         return response()->json($activo);
     }

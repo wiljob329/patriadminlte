@@ -5,7 +5,7 @@
         <div class="form-row">
             <x-adminlte-input type="text" label="Codigo" name="codigo" fgroup-class="col" placeholder="codigo"
                 id="codigo" />
-            <x-adminlte-input type="text" label="Marca" name="marca" fgroup-class="col" placeholder="Marca"
+            <x-adminlte-select type="text" label="Marca" name="marca" fgroup-class="col" placeholder="Marca"
                 id="marca" />
             <x-adminlte-input type="text" label="Modelo" name="modelo" fgroup-class="col" placeholder="Modelo"
                 id="modelo" />
@@ -21,7 +21,7 @@
                 placeholder="Observaciones" id="observacion" />
         </div>
         <div class="form-row">
-            <x-adminlte-input type="text" label="Condicion" name="condicion" fgroup-class="col" placeholder="Condicion"
+            <x-adminlte-select type="text" label="Condicion" name="condicion" fgroup-class="col" placeholder="Condicion"
                 id="condicion" />
             <x-adminlte-select name="adquisicion" fgroup-class="col" label="Adquisicion" id="adquisicion">
             </x-adminlte-select>
@@ -87,9 +87,9 @@
         <div class="form-row">
             <x-adminlte-input type="text" label="Estado" name="estado" fgroup-class="col-4" placeholder="Estado"
                 id="estado" />
-            <x-adminlte-input type="text" label="Color" name="color_id" fgroup-class="col-4" placeholder="Color"
+            <x-adminlte-select type="text" label="Color" name="color_id" fgroup-class="col-4" placeholder="Color"
                 id="color" />
-            <x-adminlte-input type="text" label="Tipo" name="tipo_id" fgroup-class="col-4" placeholder="Tipo"
+            <x-adminlte-select type="text" label="Tipo" name="tipo_id" fgroup-class="col-4" placeholder="Tipo"
                 id="tipo" />
         </div>
     @endisset
@@ -149,7 +149,7 @@
                 id="estadoshow" />
             <x-adminlte-input type="text" label="Color" name="color_id" fgroup-class="col-4" placeholder="Color"
                 id="colorshow" />
-            <x-adminlte-input type="text" label="Tipo" name="tipo_id" fgroup-class="col-4" placeholder="Tipo"
+            <x-adminlte-input type="text" label="Tipo" name="tipo" fgroup-class="col-4" placeholder="Tipo"
                 id="tiposhow" />
         </div>
     @endisset
