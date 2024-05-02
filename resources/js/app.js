@@ -10,6 +10,7 @@ const marcaurl = "http://localhost:8000/api/marcas";
 
 //window.Alpine = Alpine;
 function fillSelect(select, url) {
+    $(select).find("option").remove().end();
     $.get(url, function (data) {
         data.map((item) => {
             select.append(
@@ -17,16 +18,21 @@ function fillSelect(select, url) {
                     item.descripcion +
                     ">" +
                     item.descripcion +
-                    "</option>"
+                    "</option>",
             );
         });
     });
 }
 function fillSelect2(select, url) {
+    $(select).find("option").remove().end();
     $.get(url, function (data) {
         data.map((item) => {
             select.append(
-                "<option value=" + item.nombre + ">" + item.nombre + "</option>"
+                "<option value=" +
+                    item.nombre +
+                    ">" +
+                    item.nombre +
+                    "</option>",
             );
         });
     });
@@ -68,7 +74,7 @@ function fillForm(data, condicion, visual) {
     } else {
         fillSelect(
             $("#adquisicion" + (visual === "show" ? visual : "")),
-            adquisicionurl
+            adquisicionurl,
         );
         fillSelect($("#color" + (visual === "show" ? visual : "")), colorurl);
 
@@ -76,7 +82,7 @@ function fillForm(data, condicion, visual) {
         fillSelect2($("#tipo" + (visual === "show" ? visual : "")), tipourl);
         fillSelect2(
             $("#condicion" + (visual === "show" ? visual : "")),
-            condicionurl
+            condicionurl,
         );
     }
     $("#fecha_adquisicion" + (visual === "show" ? visual : ""))
