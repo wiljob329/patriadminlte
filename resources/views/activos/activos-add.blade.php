@@ -8,7 +8,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <x-adminlte-card title="Creacion de Activo" theme="dark" class="mt-4 elevation-3 w-75">
+            <x-adminlte-card title="Creacion de Activo" theme="dark" class="mt-4 elevation-3 w-75" id="card-create">
                 <x-slot name="toolsSlot">
                     <a href="{{ route('activos.index') }}" class="btn btn-warning btn-sm"><i class="fas fa-undo"></i>
                         Volver

@@ -1,3 +1,4 @@
+//import { document } from "postcss";
 import "./bootstrap";
 
 //import Alpine from 'alpinejs';
@@ -15,7 +16,7 @@ function fillSelect(select, url) {
         data.map((item) => {
             select.append(
                 "<option value=" +
-                    item.descripcion +
+                    item.id +
                     ">" +
                     item.descripcion +
                     "</option>",
@@ -28,11 +29,7 @@ function fillSelect2(select, url) {
     $.get(url, function (data) {
         data.map((item) => {
             select.append(
-                "<option value=" +
-                    item.nombre +
-                    ">" +
-                    item.nombre +
-                    "</option>",
+                "<option value=" + item.id + ">" + item.nombre + "</option>",
             );
         });
     });
@@ -120,8 +117,19 @@ function fillForm(data, condicion, visual) {
         .attr("disabled", condicion);
 }
 
+function isInViewport(elem) {
+    var distance = elem.getBoundingClientRect();
+    return (
+        distance.top <
+            (window.innerHeight || document.documentElement.clientHeight) &&
+        distance.bottom > 0
+    );
+}
+
 $(function () {
-    if ($("#card-datatable").length) {
+    const card = document.querySelector("#card-datatable");
+    const createc = document.querySelector("#card-create");
+    if (isInViewport(card)) {
         var table = $(".yajra-datatable").DataTable({
             processing: true,
             headers: {
@@ -169,7 +177,7 @@ $(function () {
             });
         });
     }
-    if ($("#activo_save").length) {
+    if (isInViewport(createc)) {
         fillSelect($("#adquisicion"), adquisicionurl);
     }
 });

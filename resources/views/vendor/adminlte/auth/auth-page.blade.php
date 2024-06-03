@@ -29,7 +29,7 @@
 @section('body')
 
     {{-- Logo Image --}}
-    <img id="img_index" src='vendor/adminlte/dist/img/logo_aguas.png' alt="">
+    <img id="img_index" src={{ asset('vendor/adminlte/dist/img/logo_aguas.png') }} alt="">
 
     {{-- Card Header --}}
     @hasSection('auth_header')
