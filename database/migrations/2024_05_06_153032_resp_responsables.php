@@ -20,8 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('gerencia');
             $table->unsignedBigInteger('division');
             $table->string('condicion', 50);
-            $table->foreign('gerencia')->references('nombre')->on('gerencias');
-            $table->foreign('division')->references('nombre')->on('divisionescd');
+            $table->foreign('gerencia')->references('id')->on('gerencias');
+            $table->foreign('division')->references('id')->on('divisiones');
             $table->timestamps();
         });
     }

@@ -335,7 +335,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Responsables',
-                    'url' => 'activos',
+                    'url' => 'responsables',
                 ],
             ],
         ],
