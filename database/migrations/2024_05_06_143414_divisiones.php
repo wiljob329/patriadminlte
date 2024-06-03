@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('act_catespecificas', function (Blueprint $table) {
+        Schema::create('divisiones', function (Blueprint $table) {
             $table->id();
-            $table->integer('categoria_id');
-            $table->integer('subcategoria');
-            $table->text('descripcion');
-            $table->text('codigo');
+            $table->string('nombre', 50);
+            $table->unsignedBigInteger('gerencia_id');
+            $table->foreign('gerencia_id')->references('nombre')->on('gerencias');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('act_catespecificas');
+        Schema::dropIfExists('divisiones');
     }
 };

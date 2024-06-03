@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('act_catespecificas', function (Blueprint $table) {
+        Schema::create('gerencias', function (Blueprint $table) {
             $table->id();
-            $table->integer('categoria_id');
-            $table->integer('subcategoria');
-            $table->text('descripcion');
-            $table->text('codigo');
-            $table->timestamps();
+            $table->string('nombre', 50);
         });
     }
 
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('act_catespecificas');
+        Schema::dropIfExists('gerencia');
     }
 };
