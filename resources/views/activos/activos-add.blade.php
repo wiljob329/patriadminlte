@@ -25,8 +25,11 @@
 @stop
 @section('css')
     <link rel="stylesheet" href={{ asset('css/datatables.min.css') }}>
+    <link rel="stylesheet" href={{ asset('css/buttons.bootstrap4.css') }}>
 @stop
 
 @section('js')
     <script src={{ asset('js/datatables.min.js') }}></script>
+    <script src={{ asset('js/dataTables.buttons.js') }}></script>
+    <script src={{ asset('js/buttons.bootstrap4.js') }}></script>
 @stop

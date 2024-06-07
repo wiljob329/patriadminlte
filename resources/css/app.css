@@ -3,3 +3,7 @@
 @tailwind utilities;
 */
 
+.buttonPrimary{
+    background-color: rgba() !important;
+}
+

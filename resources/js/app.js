@@ -202,7 +202,17 @@ $(function () {
                 topStart: "search",
                 topEnd: "info",
                 bottomStart: "paging",
-                bottomEnd: null,
+                bottomEnd: {
+                    buttons: [
+                        {
+                            text: "Agregar Marca",
+                            action: function (e, dt, node, config) {
+                                $("#createModal").modal("show");
+                                // dt.ajax.reload();
+                            },
+                        },
+                    ],
+                },
             },
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),

@@ -245,10 +245,12 @@
             </x-adminlte-input>
         </div>
         <div class="form-row">
-            <x-adminlte-select type="text" label="Color" name="color_id" fgroup-class="col-4" placeholder="Color"
+            <x-adminlte-select type="text" label="Color" name="color_id" fgroup-class="col" placeholder="Color"
                 id="color" />
-            <x-adminlte-select type="text" label="Tipo" name="tipo_id" fgroup-class="col-4" placeholder="Tipo"
+            <x-adminlte-select type="text" label="Tipo" name="tipo_id" fgroup-class="col" placeholder="Tipo"
                 id="tipo" />
+            <x-adminlte-select type="text" label="Estado" name="estado" fgroup-class="col" placeholder="Estado"
+                id="estado" />
         </div>
     @endisset
 </form>
@@ -274,13 +276,22 @@
     v-centered static-backdrop>
     <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
         <table class="table yajra-datatable-marca table-bordered" style="padding-top:10px;width:100%;">
-            <thead>
-                <tr>
-                    <th>nombre</th>
+            <thead style="width:100%;">
+                <tr style="width:100%">
+                    <th>
+                        <h3>Marca</h3>
+                    </th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
     </x-adminlte-card>
+</x-adminlte-modal>
+
+
+<x-adminlte-modal id="createModal" title="Agregar de Marca" size="sm" theme="primary"
+    icon="fa fa-lg fa-fw fa-plus" v-centered static-backdrop>
+    <h1>Agregar marca</h1>
+    <x-form.activo-form action="{{ route('activos.store') }}" id="activo_save" method="POST" create />
 </x-adminlte-modal>
