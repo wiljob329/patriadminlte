@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActivosController;
+use App\Http\Controllers\ActMarcaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
@@ -24,6 +25,8 @@ Route::get('/', function () {
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::resource('activos', ActivosController::class)->middleware(['auth', 'verified']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
+//api marcas
+Route::get('/marcas', [ActMarcaController::class, 'index'])->name('marcas');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

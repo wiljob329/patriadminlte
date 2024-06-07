@@ -13,7 +13,7 @@
                     <a href="{{ route('activos.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar
                         Activo</a>
                 </x-slot>
-                <table class="table yajra-datatable" style="padding-top:10px;">
+                <table class="table yajra-datatable table-bordered" style="padding-top:10px;">
                     <thead class="">
                         <tr>
                             <th>Codigo</th>
@@ -42,9 +42,9 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="css/datatables.min.css">
+    <link rel="stylesheet" href={{ asset('css/datatables.min.css') }}>
 @stop
 
 @section('js')
-    <script src="js/datatables.min.js"></script>
+    <script src={{ asset('js/datatables.min.js') }}></script>
 @stop

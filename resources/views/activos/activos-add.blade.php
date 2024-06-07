@@ -14,7 +14,7 @@
                         Volver
                     </a>
                 </x-slot>
-                <x-form.activo-form action="{{ route('activos.store') }}" id="activo_save" method="POST" editar />
+                <x-form.activo-form action="{{ route('activos.store') }}" id="activo_save" method="POST" create />
                 <x-slot name="footerSlot">
                     <x-adminlte-button id="activo_submit" form="activo_save" class="ml-auto d-flex" theme="primary"
                         label="Guardar" icon="fas fa-lg fa-save" type="submit" />
@@ -22,4 +22,11 @@
             </x-adminlte-card>
         </div>
     </div>
+@stop
+@section('css')
+    <link rel="stylesheet" href={{ asset('css/datatables.min.css') }}>
+@stop
+
+@section('js')
+    <script src={{ asset('js/datatables.min.js') }}></script>
 @stop

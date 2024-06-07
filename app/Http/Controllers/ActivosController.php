@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ActivoRequest;
 use App\Models\Activo;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -24,23 +23,23 @@ class ActivosController extends Controller
                 ->addColumn('acciones', function ($row) {
 
                     $btn = '<nobr>';
-                    $deleteButton = '<form class="d-inline" action="/activos/' . $row->codigo . '" method="POST" > <input type="hidden" name="_token" value=' . csrf_token() . '>
+                    $deleteButton = '<form class="d-inline" action="/activos/'.$row->codigo.'" method="POST" > <input type="hidden" name="_token" value='.csrf_token().'>
                     <input type="hidden" name="_method" value="delete">
                     <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Borrar">
                     <i class="fa fa-lg fa-fw fa-trash"></i></button></form>';
 
-                    $editButton = '<a href="javascript:void(0)" id="editActivo"  data-url="' . route('activos.show', [$row->codigo]) . '"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
+                    $editButton = '<a href="javascript:void(0)" id="editActivo"  data-url="'.route('activos.show', [$row->codigo]).'"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
                     $btn .= $editButton;
                     $btn .= $deleteButton;
-                    $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="' . route('activos.show', [$row->codigo]) . '"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
-                    $btn .= $showButton . '</nobr>';
+                    $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'.route('activos.show', [$row->codigo]).'"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
+                    $btn .= $showButton.'</nobr>';
 
                     return $btn;
                 })
                 ->rawColumns(['acciones'])
                 ->make(true);
 
-            return dd(DataTables::of($data)->toJson());
+            // return dd(DataTables::of($data)->toJson());
         }
 
         return view('activos.activos', []);
@@ -58,7 +57,7 @@ class ActivosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ActivoRequest $request)
+    public function store(Request $request)
     {
         //
         return dd($request);
@@ -75,9 +74,6 @@ class ActivosController extends Controller
         $activo->act_condicion;
         $activo->act_color;
         $activo->act_marca;
-
-
-
 
         return response()->json($activo);
     }

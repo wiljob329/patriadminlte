@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Activo;
 use App\Models\ActMarca;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Collection;
+use Yajra\DataTables\Facades\DataTables;
 
 class ActMarcaController extends Controller
 {
     public function index(Request $request)
     {
-        $marca = ActMarca::all();
+        // $marca = ActMarca::all();
         // $marca->activo;
 
-        return response()->json($marca);
+        $marcas = ActMarca::query();
+
+        return DataTables::of($marcas)
+            ->addIndexColumn()
+            ->make(true);
     }
 }
