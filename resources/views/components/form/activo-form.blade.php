@@ -292,8 +292,8 @@
 
 <x-adminlte-modal id="createModal" title="Agregar Marca" size="sm" theme="primary"
     icon="fa fa-lg fa-fw fa-plus" v-centered static-backdrop>
-    <x-form.marca-form action="" id="marca_save" method="POST" />
+    <x-form.marca-form action="{{ route('marcas.store') }}" id="marca_save" method="POST" />
     <x-slot name="footerSlot">
-        <x-adminlte-button theme="primary" form="marca_save" label="Guardar" />
+        <x-adminlte-button theme="primary" form="marca_save" label="Guardar" type="submit" />
     </x-slot>
 </x-adminlte-modal>

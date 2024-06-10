@@ -26,7 +26,9 @@ Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth',
 Route::resource('activos', ActivosController::class)->middleware(['auth', 'verified']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
 //api marcas
-Route::get('/marcas', [ActMarcaController::class, 'index'])->name('marcas');
+Route::get('/marcas', [ActMarcaController::class, 'index'])->middleware(['auth', 'verified'])->name('marcas');
+Route::post('/marcas', [ActMarcaController::class, 'store'])->middleware(['auth', 'verified'])->name('marcas.store');
+// Route::post('/marcas', [ActMarcaController::class, 'store'])->name('marcas.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
