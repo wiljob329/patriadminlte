@@ -119,12 +119,14 @@ function fillForm(data, condicion, visual) {
 }
 
 function isInViewport(elem) {
-    var distance = elem.getBoundingClientRect();
-    return (
-        distance.top <
-            (window.innerHeight || document.documentElement.clientHeight) &&
-        distance.bottom > 0
-    );
+    if (elem) {
+        var distance = elem.getBoundingClientRect();
+        return (
+            distance.top <
+                (window.innerHeight || document.documentElement.clientHeight) &&
+            distance.bottom > 0
+        );
+    }
 }
 
 $(function () {

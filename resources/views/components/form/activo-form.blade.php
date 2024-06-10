@@ -258,7 +258,7 @@
 
 <x-adminlte-modal id="categoriaModal" title="Categorias" size="lg" theme="primary"
     icon="fa fa-lg fa-fw fa-search" v-centered static-backdrop>
-    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
+    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable-categoria">
         <table class="table yajra-datatable-cat" style="padding-top:10px;">
             <thead>
                 <tr>
@@ -274,12 +274,12 @@
 
 <x-adminlte-modal id="marcaModal" title="Marcas" size="lg" theme="primary" icon="fa fa-lg fa-fw fa-search"
     v-centered static-backdrop>
-    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
+    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable-marca">
         <table class="table yajra-datatable-marca table-bordered" style="padding-top:10px;width:100%;">
             <thead style="width:100%;">
                 <tr style="width:100%">
                     <th>
-                        <h3>Marca</h3>
+                        <h3>Marcas</h3>
                     </th>
                 </tr>
             </thead>
@@ -290,8 +290,10 @@
 </x-adminlte-modal>
 
 
-<x-adminlte-modal id="createModal" title="Agregar de Marca" size="sm" theme="primary"
+<x-adminlte-modal id="createModal" title="Agregar Marca" size="sm" theme="primary"
     icon="fa fa-lg fa-fw fa-plus" v-centered static-backdrop>
-    <h1>Agregar marca</h1>
-    <x-form.activo-form action="{{ route('activos.store') }}" id="activo_save" method="POST" create />
+    <x-form.marca-form action="" id="marca_save" method="POST" />
+    <x-slot name="footerSlot">
+        <x-adminlte-button theme="primary" form="marca_save" label="Guardar" />
+    </x-slot>
 </x-adminlte-modal>
