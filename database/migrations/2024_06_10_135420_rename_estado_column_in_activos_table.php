@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('act_catespecificas', function (Blueprint $table) {
+        Schema::table('activos', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('categoria_id')->change();
-            $table->foreign('categoria_id')->references('id')->on('act_catgenerales')->onDelete('cascade');
-
+            $table->renameColumn('estado', 'estado_id');
         });
     }
 
@@ -24,9 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('act_catespecificas', function (Blueprint $table) {
+        Schema::table('activos', function (Blueprint $table) {
             //
-            $table->drop('categoria_id');
+            $table->renameColumn('estado_id', 'estado');
         });
     }
 };
