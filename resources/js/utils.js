@@ -26,8 +26,18 @@ export function fillSelect2(select, url) {
     });
 }
 
+export function fillSelectEstado(select, url) {
+    $(select).find("option").remove().end();
+    $.get(url, function (data) {
+        data.map((item) => {
+            select.append(
+                "<option value=" + item.id + ">" + item.estado + "</option>",
+            );
+        });
+    });
+}
 //funcion para chequear y colocar datos en el formulario
-export function fillForm(data, condicion, visual) {
+export function fillForm(data, condicion, visual, uris) {
     $("#codigo" + (visual === "show" ? visual : ""))
         .val(data.codigo)
         .attr("disabled", condicion);
@@ -62,15 +72,24 @@ export function fillForm(data, condicion, visual) {
     } else {
         fillSelect(
             $("#adquisicion" + (visual === "show" ? visual : "")),
-            adquisicionurl,
+            uris.adquisicionurl,
         );
-        fillSelect($("#color" + (visual === "show" ? visual : "")), colorurl);
+        fillSelect(
+            $("#color" + (visual === "show" ? visual : "")),
+            uris.colorurl,
+        );
 
-        fillSelect2($("#marca" + (visual === "show" ? visual : "")), marcaurl);
-        fillSelect2($("#tipo" + (visual === "show" ? visual : "")), tipourl);
+        fillSelect2(
+            $("#marca" + (visual === "show" ? visual : "")),
+            uris.marcaurl,
+        );
+        fillSelect2(
+            $("#tipo" + (visual === "show" ? visual : "")),
+            uris.tipourl,
+        );
         fillSelect2(
             $("#condicion" + (visual === "show" ? visual : "")),
-            condicionurl,
+            uris.condicionurl,
         );
     }
     $("#fecha_adquisicion" + (visual === "show" ? visual : ""))

@@ -7,6 +7,7 @@ use App\Http\Controllers\ActCondicionController;
 use App\Http\Controllers\ActDesincorporacionController;
 use App\Http\Controllers\ActMarcaController;
 use App\Http\Controllers\ActTipoController;
+use App\Http\Controllers\EstadoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,4 @@ Route::get('/tipos', [ActTipoController::class, 'index']);
 Route::get('/condicion', [ActCondicionController::class, 'index']);
 Route::get('/color', [ActColorController::class, 'index']);
 Route::get('/desincorporacion', [ActDesincorporacionController::class, 'index']);
+Route::get('/estado', [EstadoController::class, 'index']);

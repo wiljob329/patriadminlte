@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\ActTipoController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -38,8 +37,14 @@ class Activo extends Model
     {
         return $this->belongsTo(ActColor::class, 'color_id', 'id');
     }
+
     public function ActDesincorporaciones()
     {
         return $this->belongsTo(ActDesincorporacion::class, 'adquisicion_id', 'id');
+    }
+
+    public function estado()
+    {
+        return $this->belongsTo(Estado::class, 'estado', 'id');
     }
 }

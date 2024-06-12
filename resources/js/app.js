@@ -1,14 +1,23 @@
 //import { document } from "postcss";
 import "./bootstrap";
-import { fillSelect, fillSelect2, fillForm, isInViewport } from "./utils";
+import {
+    fillSelect,
+    fillSelect2,
+    fillForm,
+    isInViewport,
+    fillSelectEstado,
+} from "./utils";
 
 //import Alpine from 'alpinejs';
 
-const adquisicionurl = "http://localhost:8000/api/adquisiciones";
-const tipourl = "http://localhost:8000/api/tipos";
-const condicionurl = "http://localhost:8000/api/condicion";
-const colorurl = "http://localhost:8000/api/color";
-const marcaurl = "http://localhost:8000/api/marcas";
+const Uris = {
+    adquisicionurl: "http://localhost:8000/api/adquisiciones",
+    colorurl: "http://localhost:8000/api/color",
+    marcaurl: "http://localhost:8000/api/marcas",
+    tipourl: "http://localhost:8000/api/tipos",
+    condicionurl: "http://localhost:8000/api/condicion",
+    estadourl: "http://localhost:8000/api/estado",
+};
 const createMarcaInput = $("#marca");
 
 $(function () {
@@ -52,23 +61,24 @@ $(function () {
         $(".yajra-datatable tbody").on("click", "#showActivo", function () {
             let activoURL = $(this).data("url");
             $.get(activoURL, function (data) {
-                fillForm(data, true, "show");
+                fillForm(data, true, "show", Uris);
                 $("#modalShow").modal("show");
             });
         });
         $(".yajra-datatable tbody").on("click", "#editActivo", function () {
             let activoURL = $(this).data("url");
             $.get(activoURL, function (data) {
-                fillForm(data, false, "");
+                fillForm(data, false, "", Uris);
                 $("#modalEdit").modal("show");
             });
         });
     }
     if (isInViewport(createc)) {
-        fillSelect($("#adquisicion"), adquisicionurl);
-        fillSelect2($("#condicion"), condicionurl);
-        fillSelect($("#color"), colorurl);
-        fillSelect2($("#tipo"), tipourl);
+        fillSelect($("#adquisicion"), Uris.adquisicionurl);
+        fillSelect2($("#condicion"), Uris.condicionurl);
+        fillSelect($("#color"), Uris.colorurl);
+        fillSelect2($("#tipo"), Uris.tipourl);
+        fillSelectEstado($("#estado"), Uris.estadourl);
         // fillSelect2($("#marca"), marcaurl);
         // $("#marca").replaceWith(
         //     "<input id='marcai' class='form-control' name='marca' value='' type='text' placeholder='marca' >",

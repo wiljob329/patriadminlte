@@ -20,7 +20,19 @@ class ActMarcaController extends Controller
     public function store(Request $request)
     {
 
-        return dd($request);
+        $request->validate([
+            // 'nombre' => ['required', ActMarca::unique()],
+            'nombre' => 'required|unique:act_marcas',
+        ]);
+
+        $marca = new ActMarca();
+
+        $marca->nombre = $request->nombre;
+
+        $marca->save();
+
+        // return dd($request);
+        return redirect()->route('activos.create');
 
     }
 }
