@@ -20,6 +20,11 @@ class ActivosController extends Controller
             return DataTables::of($data)
                 // ->setRowId('id')
                 ->addIndexColumn()
+                ->addColumn('estado', function ($row) {
+                    $est = $row->estado;
+
+                    return $est->estado;
+                })
                 ->addColumn('acciones', function ($row) {
 
                     $btn = '<nobr>';
@@ -36,7 +41,7 @@ class ActivosController extends Controller
 
                     return $btn;
                 })
-                ->rawColumns(['acciones'])
+                ->rawColumns(['estado', 'acciones'])
                 ->make(true);
 
             // return dd(DataTables::of($data)->toJson());
@@ -74,6 +79,7 @@ class ActivosController extends Controller
         $activo->act_condicion;
         $activo->act_color;
         $activo->act_marca;
+        $activo->estado;
 
         return response()->json($activo);
     }

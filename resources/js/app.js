@@ -31,6 +31,27 @@ $(function () {
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
+            layout: {
+                topStart: {
+                    buttons: [
+                        {
+                            extend: "pdfHtml5",
+                            orientation: "landscape",
+                            pageSize: "LEGAL",
+                            download: "open",
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 6],
+                            },
+                        },
+                        {
+                            extend: "excelHtml5",
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 6],
+                            },
+                        },
+                    ],
+                },
+            },
             serverSide: true,
             selected: true,
             responsive: true,
@@ -43,9 +64,10 @@ $(function () {
                 { data: "fecha_adquisicion", name: "fecha_adquisicion" },
                 {
                     data: "acciones",
-                    name: "acciones",
+                    // name: "acciones",
                     orderable: false,
                 },
+                { data: "serial", visible: false },
             ],
         });
         $(".yajra-datatable tbody").on("click", "tr", function () {

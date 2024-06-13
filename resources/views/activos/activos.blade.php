@@ -22,6 +22,7 @@
                             <th>Estado</th>
                             <th>Fecha Adquisicion</th>
                             <th>Acciones</th>
+                            <th>Serial</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,8 +44,17 @@
 
 @section('css')
     <link rel="stylesheet" href={{ asset('css/datatables.min.css') }}>
+    <link rel="stylesheet" href={{ asset('css/buttons.bootstrap4.css') }}>
 @stop
 
 @section('js')
     <script src={{ asset('js/datatables.min.js') }}></script>
+    <script src={{ asset('js/dataTables.buttons.js') }}></script>
+    <script src={{ asset('js/buttons.bootstrap4.js') }}></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.colVis.min.js"></script>
 @stop

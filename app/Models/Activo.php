@@ -45,6 +45,6 @@ class Activo extends Model
 
     public function estado()
     {
-        return $this->belongsTo(Estado::class, 'estado', 'id');
+        return $this->belongsTo(Estado::class, 'estado_id', 'id');
     }
 }
