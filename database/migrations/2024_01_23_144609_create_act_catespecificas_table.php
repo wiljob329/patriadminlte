@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('act_catespecificas', function (Blueprint $table) {
             $table->id();
-            $table->integer('categoria_id');
-            $table->integer('subcategoria');
+            $table->unsignedBigInteger('categoria_id');
+            $table->foreign('categoria_id')->references('id')->on('act_catgenerales')->onDelete('cascade');
+            $table->integer('subcategoria_id');
+            $table->foreign('subcategoria_id')->references('id')->on('act_subcat')->onDelete('cascade');
             $table->text('descripcion');
             $table->text('codigo');
             $table->timestamps();
