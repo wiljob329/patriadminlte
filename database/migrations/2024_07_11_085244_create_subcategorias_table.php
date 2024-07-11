@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('divisiones', function (Blueprint $table) {
+        Schema::create('subcategorias', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 50);
-            $table->unsignedBigInteger('gerencia_id');
-            $table->foreign('gerencia_id')->references('id')->on('gerencias');
+            $table->string('nombre');
+            $table->foreignId('categoria_general_id')->constrained('categorias_generales');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('divisiones');
+        Schema::dropIfExists('subcategorias');
     }
 };

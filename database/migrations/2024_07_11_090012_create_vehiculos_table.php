@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('act_marcas', function (Blueprint $table) {
+        Schema::create('vehiculos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 50);
+            $table->foreignId('activo_id')->constrained('activos')->onDelete('cascade');
+            $table->string('serial_carroseria');
+            $table->string('anio_fabricacion');
+            $table->string('serial_motor');
+            $table->string('placa');
             $table->timestamps();
         });
     }
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('act_marcas');
+        Schema::dropIfExists('vehiculos');
     }
 };

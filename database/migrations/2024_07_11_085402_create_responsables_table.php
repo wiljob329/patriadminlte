@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('act_subcat', function (Blueprint $table) {
+        Schema::create('responsables', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('cargo')->nullable();
+            $table->foreignId('division_id')->constrained('divisiones');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('act_subcat');
+        Schema::dropIfExists('responsables');
     }
 };

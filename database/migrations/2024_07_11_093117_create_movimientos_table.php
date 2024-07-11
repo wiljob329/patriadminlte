@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gerencias', function (Blueprint $table) {
+        Schema::create('movimientos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 50);
+            $table->foreignId('activo_id')->constrained('activos');
+            $table->date('fecha_movimiento');
+            $table->string('tipo_movimiento')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gerencias');
+        Schema::dropIfExists('movimientos');
     }
 };

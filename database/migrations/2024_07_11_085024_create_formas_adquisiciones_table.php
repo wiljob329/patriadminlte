@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('act_desincorporaciones', function (Blueprint $table) {
+        Schema::create('formas_adquisiciones', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('activo_id');
-            $table->foreign('activo_id')->references('codigo')->on('activos');
-            $table->string('motivo');
+            $table->string('adquisicion');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('act_desincorporaciones');
+        Schema::dropIfExists('formas_adquisiciones');
     }
 };

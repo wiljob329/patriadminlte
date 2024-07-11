@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('act_condiciones', function (Blueprint $table) {
+        Schema::create('depreciaciones', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->foreignId('activo_id')->constrained('activos');
+            $table->date('fecha');
+            $table->decimal('depreciacion', 10, 2);
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('act_condiciones');
+        Schema::dropIfExists('depreciaciones');
     }
 };

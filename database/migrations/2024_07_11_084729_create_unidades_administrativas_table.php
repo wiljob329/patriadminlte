@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('act_catgenerales', function (Blueprint $table) {
+        Schema::create('unidades_administrativas', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion');
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('act_catgenerales');
+        Schema::dropIfExists('unidades_administrativas');
     }
 };
