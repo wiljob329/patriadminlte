@@ -30,8 +30,7 @@ return new class extends Migration
             $table->foreignId('categoria_general_id')->constrained('categorias_generales');
             $table->foreignId('subcategoria_id')->constrained('subcategorias');
             $table->foreignId('categoria_especifica_id')->constrained('categorias_especificas');
-            $table->foreignId('depreciacion_id')->constrained('depreciaciones');
-            $table->foreignId('desincorporacion_id')->constrained('desincorporaciones');
+            $table->foreignId('responsable_id')->constrained('responsables');
             $table->timestamps();
         });
     }
