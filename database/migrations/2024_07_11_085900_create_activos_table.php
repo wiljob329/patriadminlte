@@ -27,8 +27,8 @@ return new class extends Migration
             $table->foreignId('marca_id')->constrained('marcas');
             $table->string('modelo')->nullable();
             $table->foreignId('color_id')->constrained('colores');
-            $table->foreignId('categoria_general_id')->constrained('categorias_generales');
-            $table->foreignId('subcategoria_id')->constrained('subcategorias');
+            //$table->foreignId('categoria_general_id')->constrained('categorias_generales');
+            //$table->foreignId('subcategoria_id')->constrained('subcategorias');
             $table->foreignId('categoria_especifica_id')->constrained('categorias_especificas');
             $table->foreignId('responsable_id')->constrained('responsables');
             $table->timestamps();
