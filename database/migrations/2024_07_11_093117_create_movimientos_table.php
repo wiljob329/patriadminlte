@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('activo_id')->constrained('activos');
             $table->date('fecha_movimiento');
-            $table->string('tipo_movimiento')->nullable();
+            $table->foreignId('nuevo_custodio')->constrained('responsables');
+            $table->string('analista_administrativo');
+            $table->string('motivo_movimiento')->nullable();
             $table->text('descripcion')->nullable();
             $table->timestamps();
         });
