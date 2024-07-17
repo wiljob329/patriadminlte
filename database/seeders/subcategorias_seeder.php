@@ -157,6 +157,10 @@ class subcategorias_seeder extends Seeder
                 'nombre' => 'Otros_equipos_de_transporte_tracción_y_elevación',
                 'categoria_general_id' => 7,
             ],
+            [
+                'nombre' => 'Sin_categoria',
+                'categoria_general_id' => 8,
+            ],
         ]);
     }
 }

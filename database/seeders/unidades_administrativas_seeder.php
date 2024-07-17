@@ -25,6 +25,21 @@ class unidades_administrativas_seeder extends Seeder
             [
                 'nombre' => 'GERENCIA GENERAL DE INGENIERIA Y OPERACIONES',
             ],
+            [
+                'nombre' => 'AUDITORIA INTERNA',
+            ],
+            [
+                'nombre' => 'PRESIDENCIA',
+            ],
+            [
+                'nombre' => 'CONSULTORÍA JURIDICA',
+            ],
+            [
+                'nombre' => 'GERENCIA DE SEGURIDAD INTEGRAL',
+            ],
+            [
+                'nombre' => 'GERENCIA DE SEGUIMIENTO Y POLÍTICA PÚBLICAS',
+            ],
         ]);
     }
 }

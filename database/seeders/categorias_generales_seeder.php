@@ -34,6 +34,9 @@ class categorias_generales_seeder extends Seeder
             [
                 'nombre' => 'Equipos_de_transporte_tracción_y_elevación',
             ],
+            [
+                'nombre' => 'Sin_categoria',
+            ],
         ]);
     }
 }

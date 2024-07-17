@@ -5,6 +5,7 @@ use App\Http\Controllers\ActMarcaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+Route::get('/', [TestingController::class, 'index']);
+
+// Route::get('/', function () {
+//     return redirect()->route('login');
+// });
 
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::resource('activos', ActivosController::class)->middleware(['auth', 'verified']);
