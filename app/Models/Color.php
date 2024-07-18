@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ActAdquisicione extends Model
+class Color extends Model
 {
     use HasFactory;
 
-    protected $table = 'act_adquisiciones';
+    protected $table = 'colores';
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     public function activo()
     {
-        return $this->hasMany(Activo::class, 'id', 'adquisicion_id');
+        return $this->hasMany(Activo::class, 'color_id');
     }
 }

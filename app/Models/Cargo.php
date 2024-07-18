@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gerencia extends Model
+class Cargo extends Model
 {
     use HasFactory;
 
-    protected $table = 'gerencias';
+    protected $table = 'cargos';
 
     protected $guarded = ['id'];
 
-    public function division()
+    public function responsable()
     {
-        return $this->hasMany(Division::class, 'gerencia_id');
+        return $this->hasMany(Responsable::class, 'cargo_id');
     }
 }

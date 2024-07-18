@@ -9,42 +9,62 @@ class Activo extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'codigo';
+    protected $table = 'activos';
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
-    public function actadquisicione()
+    public function formaAdquisicion()
     {
-        return $this->belongsTo(ActAdquisicione::class, 'adquisicion_id', 'id');
+        return $this->belongsTo(FormaAdquisicion::class, 'forma_adquisicion_id');
     }
 
-    public function act_tipo()
+    public function act_tipo()//averiguar que es el tipo
     {
         return $this->belongsTo(ActTipo::class, 'tipo_id', 'id');
     }
 
-    public function act_marca()
+    public function marca()
     {
-        return $this->belongsTo(ActMarca::class, 'marca_id', 'id');
+        return $this->belongsTo(Marca::class, 'marca_id');
     }
 
-    public function act_condicion()
+    public function condicionFisica()
     {
-        return $this->belongsTo(ActCondicion::class, 'condicion_id', 'id');
+        return $this->belongsTo(CondicionFisica::class, 'condicion_fisica_id');
     }
 
-    public function act_color()
+    public function color()
     {
-        return $this->belongsTo(ActColor::class, 'color_id', 'id');
+        return $this->belongsTo(Color::class, 'color_id');
     }
 
-    public function ActDesincorporaciones()
+    public function estadoActivo()
     {
-        return $this->belongsTo(ActDesincorporacion::class, 'adquisicion_id', 'id');
+        return $this->belongsTo(EstadoActivo::class, 'estado_activo_id');
     }
 
-    public function estado()
+    public function responsable()
     {
-        return $this->belongsTo(Estado::class, 'estado_id', 'id');
+        return $this->belongsTo(Responsable::class, 'responsable_id');
+    }
+
+    public function categoriaEspecifica()
+    {
+        return $this->belongsTo(CategoriaEspecifica::class, 'categoria_especifica_id');
+    }
+
+    public function moneda()
+    {
+        return $this->belongsTo(Moneda::class, 'moneda_id');
+    }
+
+    public function sede()
+    {
+        return $this->belongsTo(Sede::class, 'sede_id');
+    }
+
+    public function unidadAdministrativa()
+    {
+        return $this->belongsTo(UnidadAdministrativa::class, 'unidad_administrativa_id');
     }
 }

@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Estado extends Model
+class Sede extends Model
 {
     use HasFactory;
 
-    protected $table = 'estados';
+    protected $table = 'sedes';
 
-    protected $primaryKey = 'id';
-
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     public function activo()
     {
-        return $this->belongsTo(Activo::class, 'id', 'estado_id');
+        return $this->hasMany(Activo::class, 'sede_id');
     }
 }

@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gerencia extends Model
+class FormaAdquisicion extends Model
 {
     use HasFactory;
-
-    protected $table = 'gerencias';
+    protected $table = 'formas_adquisiciones';
 
     protected $guarded = ['id'];
 
-    public function division()
+    public function activo()
     {
-        return $this->hasMany(Division::class, 'gerencia_id');
+        return $this->hasMany(Activo::class, 'forma_adquisicion_id');
     }
 }

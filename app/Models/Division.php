@@ -9,12 +9,17 @@ class Division extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id';
     protected $table = 'divisiones';
-    protected $guarded = [];
 
-    public function division()
+    protected $guarded = ['id'];
+
+    public function gerencia()
     {
-        return $this->belongsTo(Gerencia::class, 'id', 'gerencia_id');
+        return $this->belongsTo(Gerencia::class, 'gerencia_id');
+    }
+
+    public function responsable()
+    {
+        return $this->hasMany(Responsable::class, 'division_id');
     }
 }
