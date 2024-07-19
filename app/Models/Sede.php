@@ -13,8 +13,12 @@ class Sede extends Model
 
     protected $guarded = ['id'];
 
-    public function activo()
+    public function activos()
     {
         return $this->hasMany(Activo::class, 'sede_id');
+    }
+    public function ubicaciones()
+    {
+        return $this->hasMany(Ubicacion::class);
     }
 }

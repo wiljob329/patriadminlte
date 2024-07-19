@@ -15,14 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('sede_id')->constrained('sedes');
             $table->foreignId('unidad_administrativa_id')->constrained('unidades_administrativas');
+            $table->foreignId('ubicacion_id')->constrained('ubicaciones');
             $table->string('codigo_interno');
             $table->text('descripcion')->nullable();
             $table->text('observacion')->nullable();
             $table->foreignId('forma_adquisicion_id')->constrained('formas_adquisiciones');
             $table->date('fecha_adquisicion');
             $table->string('nro_documento_factura');
-            $table->decimal('valor_adquisicion', 10, 2);
-            $table->foreignId('moneda_id')->constrained('monedas');
             $table->foreignId('estado_activo_id')->constrained('estados_activos');
             $table->foreignId('condicion_fisica_id')->constrained('condiciones_fisicas');
             $table->foreignId('marca_id')->constrained('marcas');
@@ -35,7 +34,10 @@ return new class extends Migration
             $table->foreignId('color_id')->constrained('colores');
             $table->foreignId('categoria_especifica_id')->constrained('categorias_especificas');
             $table->foreignId('responsable_id')->constrained('responsables');
+            $table->date('fecha_baja')->nullable();
             $table->timestamps();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
         });
     }
 

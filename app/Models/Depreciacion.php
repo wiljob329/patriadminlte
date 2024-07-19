@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoriaGeneral extends Model
+class Depreciacion extends Model
 {
     use HasFactory;
 
-    protected $table = 'categorias_generales';
+    protected $table = 'depreciaciones';
 
     protected $guarded = ['id'];
 
-    public function subCategorias()
+    public function activo()
     {
-        return $this->hasMany(SubCategoria::class,'categoria_general_id');
+        return $this->belongsTo(Activo::class, 'activo_id');
     }
 }

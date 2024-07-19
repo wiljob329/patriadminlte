@@ -22,4 +22,9 @@ class Responsable extends Model
     {
         return $this->belongsTo(Cargo::class, 'cargo_id');
     }
+
+    public function activos()
+    {
+        return $this->hasMany(Activo::class, 'responsable_id');
+    }
 }

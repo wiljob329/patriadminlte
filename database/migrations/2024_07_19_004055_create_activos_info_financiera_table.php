@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('depreciaciones', function (Blueprint $table) {
+        Schema::create('activos_info_financiera', function (Blueprint $table) {
             $table->id();
             $table->foreignId('activo_id')->constrained('activos')->onDelete('cascade');
-            $table->date('fecha');
-            $table->decimal('depreciacion', 15, 2);
+            $table->decimal('valor_adquisicion', 15,2);
+            $table->foreignId('moneda_id')->constrained('monedas');
+            $table->decimal('valor_actual', 15,2)->nullable();
+            $table->date('fecha_ultima_valuacion')->nullable();
             $table->timestamps();
+
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('depreciaciones');
+        Schema::dropIfExists('activos_info_financiera');
     }
 };

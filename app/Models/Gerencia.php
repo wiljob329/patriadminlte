@@ -13,7 +13,7 @@ class Gerencia extends Model
 
     protected $guarded = ['id'];
 
-    public function division()
+    public function divisiones()
     {
         return $this->hasMany(Division::class, 'gerencia_id');
     }

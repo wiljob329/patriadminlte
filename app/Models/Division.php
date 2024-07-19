@@ -18,7 +18,7 @@ class Division extends Model
         return $this->belongsTo(Gerencia::class, 'gerencia_id');
     }
 
-    public function responsable()
+    public function responsables()
     {
         return $this->hasMany(Responsable::class, 'division_id');
     }

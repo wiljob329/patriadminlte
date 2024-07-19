@@ -13,7 +13,7 @@ class Cargo extends Model
 
     protected $guarded = ['id'];
 
-    public function responsable()
+    public function responsables()
     {
         return $this->hasMany(Responsable::class, 'cargo_id');
     }

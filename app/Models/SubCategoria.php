@@ -15,12 +15,12 @@ class SubCategoria extends Model
 
     public function categoriaGeneral()
     {
-        return $this->belongsTo(CategoriaGeneral::class, 'categoria_general_id', 'id');
+        return $this->belongsTo(CategoriaGeneral::class, 'categoria_general_id');
 
     }
 
-    public function categoriaEspecifica()
+    public function categoriasEspecificas()
     {
-        return $this->hasMany(CategoriaEspecifica::class, 'id', 'subcategoria_id');
+        return $this->hasMany(CategoriaEspecifica::class,'subcategoria_id');
     }
 }

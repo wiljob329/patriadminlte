@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('desincorporaciones', function (Blueprint $table) {
+        Schema::create('mantenimientos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('activo_id')->constrained('activos');
-            $table->text('motivo')->nullable();
-            $table->date('fecha_desincorporacion');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin')->nullable();
+            $table->text('descripcion');
+            $table->decimal('costo', 15, 2)->nullable();
+            $table->string('proveedor')->nullable();
+            $table->enum('estado', ['Programado', 'En proceso', 'Completado', 'Cancelado']);
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
         });
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('desincorporaciones');
+        Schema::dropIfExists('mantenimientos');
     }
 };

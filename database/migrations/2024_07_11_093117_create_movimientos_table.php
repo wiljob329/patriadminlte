@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('motivo_movimiento')->nullable();
             $table->text('descripcion')->nullable();
             $table->timestamps();
+            $table->unsignedBigInteger('created_by')->nullable();
         });
     }
 

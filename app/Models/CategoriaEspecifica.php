@@ -15,6 +15,11 @@ class CategoriaEspecifica extends Model
 
     public function subCategoria()
     {
-        return $this->belongsTo(SubCategoria::class, 'subcategoria_id', 'id');
+        return $this->belongsTo(SubCategoria::class, 'subcategoria_id');
+    }
+
+    public function activos()
+    {
+        return $this->hasMany(Activo::class, 'categoria_especifica_id');
     }
 }

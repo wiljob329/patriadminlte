@@ -18,10 +18,10 @@ class Activo extends Model
         return $this->belongsTo(FormaAdquisicion::class, 'forma_adquisicion_id');
     }
 
-    public function act_tipo()//averiguar que es el tipo
-    {
-        return $this->belongsTo(ActTipo::class, 'tipo_id', 'id');
-    }
+    // public function act_tipo()//averiguar que es el tipo
+    // {
+    //     return $this->belongsTo(ActTipo::class, 'tipo_id', 'id');
+    // }
 
     public function marca()
     {
@@ -48,14 +48,34 @@ class Activo extends Model
         return $this->belongsTo(Responsable::class, 'responsable_id');
     }
 
+    public function infoFinanciera()
+    {
+        return $this->hasOne(ActivoInfoFinanciera::class, 'activo_id');
+    }
+
+    public function vehiculo()
+    {
+        return $this->hasOne(Vehiculo::class, 'activo_id');
+    }
+
+    public function movimientos()
+    {
+        return $this->hasMany(Movimiento::class, 'activo_id');
+    }
+
     public function categoriaEspecifica()
     {
         return $this->belongsTo(CategoriaEspecifica::class, 'categoria_especifica_id');
     }
 
-    public function moneda()
+    public function depreciaciones()
     {
-        return $this->belongsTo(Moneda::class, 'moneda_id');
+        return $this->hasMany(Depreciacion::class, 'activo_id');
+    }
+
+    public function mantenimientos()
+    {
+        return $this->hasMany(Mantenimiento::class, 'activo_id');
     }
 
     public function sede()
@@ -67,4 +87,15 @@ class Activo extends Model
     {
         return $this->belongsTo(UnidadAdministrativa::class, 'unidad_administrativa_id');
     }
+
+    public function ubicacion()
+    {
+        return $this->belongsTo(Ubicacion::class);
+    }
+
+    public function desincorporaciones()
+    {
+        return $this->hasMany(Desincorporacion::class, 'activo_id');
+    }
+
 }
