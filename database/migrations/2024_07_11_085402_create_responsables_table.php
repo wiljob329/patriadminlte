@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('responsables', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('apellido');
             $table->string('cedula');
             $table->foreignId('cargo_id')->constrained('cargos');
             $table->foreignId('division_id')->constrained('divisiones');

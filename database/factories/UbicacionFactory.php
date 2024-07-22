@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ActAdquisicione>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ubicacion>
  */
-class ActAdquisicioneFactory extends Factory
+class UbicacionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,6 +18,9 @@ class ActAdquisicioneFactory extends Factory
     {
         return [
             //
+            'nombre' => fake()->city(),
+            'descripcion' => fake()->sentence(),
+            'sede_id' => 1
         ];
     }
 }
