@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TestingController::class, 'index']);
+// Route::get('/', [TestingController::class, 'index']);
 
-// Route::get('/', function () {
-//     return redirect()->route('login');
-// });
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::resource('activos', ActivosController::class)->middleware(['auth', 'verified']);

@@ -18,25 +18,25 @@ class ActivosController extends Controller
             $data = Activo::all();
 
             return DataTables::of($data)
-                // ->setRowId('id')
+                ->setRowId('id')
                 ->addIndexColumn()
                 ->addColumn('estado', function ($row) {
-                    $est = $row->estado;
+                    $est = $row->estadoActivo;
 
                     return $est->estado;
                 })
                 ->addColumn('acciones', function ($row) {
 
                     $btn = '<nobr>';
-                    $deleteButton = '<form class="d-inline" action="/activos/'.$row->codigo.'" method="POST" > <input type="hidden" name="_token" value='.csrf_token().'>
+                    $deleteButton = '<form class="d-inline" action="/activos/'.$row->id.'" method="POST" > <input type="hidden" name="_token" value='.csrf_token().'>
                     <input type="hidden" name="_method" value="delete">
                     <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Borrar">
                     <i class="fa fa-lg fa-fw fa-trash"></i></button></form>';
 
-                    $editButton = '<a href="javascript:void(0)" id="editActivo"  data-url="'.route('activos.show', [$row->codigo]).'"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
+                    $editButton = '<a href="javascript:void(0)" id="editActivo"  data-url="'.route('activos.show', [$row->id]).'"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
                     $btn .= $editButton;
                     $btn .= $deleteButton;
-                    $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'.route('activos.show', [$row->codigo]).'"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
+                    $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'.route('activos.show', [$row->id]).'"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
                     $btn .= $showButton.'</nobr>';
 
                     return $btn;

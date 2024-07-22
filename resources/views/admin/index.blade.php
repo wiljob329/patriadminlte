@@ -9,7 +9,9 @@
     <div class="container-fluid">
         <div class="row">
             <x-adminlte-small-box title="{{ $activos }}" text="Total de Activos" icon="fas fa-fw fa-city text-teal"
-                theme="primary" url="{{ route('activos.index') }}" url-text="Ver los activos" class="mt-3 elevation-3 col-4" />
+                theme="primary" url="{{ route('activos.index') }}" url-text="Ver los activos" class="mt-3 elevation-3 col-3" />
+            <x-adminlte-small-box title="{{ $responsable }}" text="Total Responsables" icon="fas fa-fw fa-users text-teal"
+                theme="primary" url="#" url-text="Ver responsables" class="mx-3 mt-3 elevation-3 col-3" />
         </div>
     </div>
 @stop

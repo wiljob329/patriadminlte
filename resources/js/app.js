@@ -57,7 +57,7 @@ $(function () {
             responsive: true,
             ajax: "activos",
             columns: [
-                { data: "codigo", name: "codigo" },
+                { data: "codigo_interno", name: "codigo_interno" },
                 { data: "modelo", name: "modelo" },
                 { data: "descripcion", name: "descripcion" },
                 { data: "estado", name: "estado" },
@@ -103,7 +103,7 @@ $(function () {
         fillSelectEstado($("#estado"), Uris.estadourl);
         // fillSelect2($("#marca"), marcaurl);
         // $("#marca").replaceWith(
-        //     "<input id='marcai' class='form-control' name='marca' value='' type='text' placeholder='marca' >",
+        //     "<input id='' class='form-control' name='marca' value='' type='text' placeholder='marca' >",
         // );
     }
     $("#categoriaModal").on("show.bs.modal", (e) => {
