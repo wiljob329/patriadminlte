@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActMarca;
+use App\Models\Marca;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class ActMarcaController extends Controller
+class MarcaController extends Controller
 {
     public function index(Request $request)
     {
-        $marcas = ActMarca::query();
+        $marcas = Marca::query();
 
         return DataTables::of($marcas)
             ->addIndexColumn()
@@ -22,12 +22,12 @@ class ActMarcaController extends Controller
 
         $request->validate([
             // 'nombre' => ['required', ActMarca::unique()],
-            'nombre' => 'required|unique:act_marcas',
+            'marca' => 'required|unique:marcas',
         ]);
 
-        $marca = new ActMarca();
+        $marca = new Marca();
 
-        $marca->nombre = $request->nombre;
+        $marca->marca = $request->marca;
 
         $marca->save();
 

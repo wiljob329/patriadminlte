@@ -136,7 +136,7 @@ $(function () {
             responsive: true,
             selected: true,
             ajax: url,
-            columns: [{ data: "nombre" }],
+            columns: [{ data: "marca" }],
         });
         $(".yajra-datatable-marca tbody").on("click", "tr", function () {
             if ($(this).hasClass("selected")) {
