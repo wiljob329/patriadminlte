@@ -32,6 +32,7 @@ return new class extends Migration
             $table->date('inicio_garantia')->nullable();
             $table->date('fin_garantia')->nullable();
             $table->foreignId('color_id')->constrained('colores');
+            $table->foreignId('tipo_activo_id')->constrained('tipo_activos');
             $table->foreignId('categoria_especifica_id')->constrained('categorias_especificas');
             $table->foreignId('responsable_id')->constrained('responsables');
             $table->date('fecha_baja')->nullable();

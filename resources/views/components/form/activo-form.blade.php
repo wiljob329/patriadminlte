@@ -157,8 +157,8 @@
 
     @isset($create)
         <div class="form-row">
-            <x-adminlte-input type="text" label="Codigo" name="codigo" fgroup-class="col" placeholder="codigo"
-                id="codigo" />
+            <x-adminlte-input type="text" label="Codigo Interno" name="codigo" fgroup-class="col"
+                placeholder="codigo" id="codigo" />
             <x-adminlte-input type="text" label="Marca" name="marca" fgroup-class="col" placeholder="Marca"
                 id="marca">
                 <x-slot name="prependSlot">
@@ -183,9 +183,9 @@
                 placeholder="Observaciones" id="observacion" />
         </div>
         <div class="form-row">
-            <x-adminlte-select type="text" label="Condicion" name="condicion" fgroup-class="col"
+            <x-adminlte-select type="text" label="Condicion Fisica" name="condicion" fgroup-class="col"
                 placeholder="Condicion" id="condicion" />
-            <x-adminlte-select name="adquisicion" fgroup-class="col" label="Adquisicion" id="adquisicion">
+            <x-adminlte-select name="adquisicion" fgroup-class="col" label="Forma de Adquisicion" id="adquisicion">
             </x-adminlte-select>
             @php
                 $config = [
@@ -202,7 +202,7 @@
                     </div>
                 </x-slot>
             </x-adminlte-input-date>
-            <x-adminlte-input type="text" label="Moneda" name="moneda" fgroup-class="col" placeholder="Moneda"
+            <x-adminlte-select type="text" label="Moneda" name="moneda" fgroup-class="col" placeholder="Moneda"
                 id="moneda" />
         </div>
         <div class="form-row">
@@ -252,6 +252,18 @@
             <x-adminlte-select type="text" label="Estado" name="estado" fgroup-class="col" placeholder="Estado"
                 id="estado" />
         </div>
+        <div class="form-row">
+            <x-adminlte-input type="text" label="Responsable" name="responsable" fgroup-class="col"
+                placeholder="Responsable" id="responsable">
+                <x-slot name="prependSlot">
+                    <div class="input-group-text text-primary">
+                        <a href="#" data-toggle="modal" data-target="#responsableModal">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </x-slot>
+            </x-adminlte-input>
+        </div>
     @endisset
 </form>
 
@@ -259,11 +271,11 @@
 <x-adminlte-modal id="categoriaModal" title="Categorias" size="lg" theme="primary"
     icon="fa fa-lg fa-fw fa-search" v-centered static-backdrop>
     <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
-        <table class="table yajra-datatable-cat" style="padding-top:10px;">
-            <thead>
-                <tr>
+        <table class="table yajra-datatable-cat" style="padding-top:10px;width: 100%;">
+            <thead style="width: 100%;">
+                <tr style="width: 100%;">
                     <th>Categoria especifica</th>
-                    <th>Categoria general</th>
+                    <th>Codigo</th>
                 </tr>
             </thead>
             <tbody>
@@ -281,6 +293,24 @@
                     <th>
                         <h3>Marca</h3>
                     </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </x-adminlte-card>
+</x-adminlte-modal>
+
+<x-adminlte-modal id="responsableModal" title="Responsables" size="lg" theme="primary"
+    icon="fa fa-lg fa-fw fa-search" v-centered static-backdrop>
+    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
+        <table class="table yajra-datatable-responsable" style="padding-top:10px;width: 100%;">
+            <thead style="width: 100%;">
+                <tr style="width: 100%;">
+                    <th>Responsable</th>
+                    <th>Cargo</th>
+                    <th>Division</th>
+                    <th>Gerencia</th>
                 </tr>
             </thead>
             <tbody>

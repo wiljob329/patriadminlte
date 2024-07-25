@@ -3,9 +3,11 @@
 use App\Http\Controllers\ActivosController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\CategoriaEspecificaController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TestingController;
+use App\Http\Controllers\ResponsableActivoController;
+// use App\Http\Controllers\TestingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +34,8 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('l
 Route::get('/marcas', [MarcaController::class, 'index'])->middleware(['auth', 'verified'])->name('marcas');
 Route::post('/marcas', [MarcaController::class, 'store'])->middleware(['auth', 'verified'])->name('marcas.store');
 // Route::post('/marcas', [ActMarcaController::class, 'store'])->name('marcas.store');
+Route::get('/categoriaespecificas', [CategoriaEspecificaController::class, 'index'])->middleware(['auth', 'verified'])->name('categoriaespecifica');
+Route::get('/responsables', [ResponsableActivoController::class, 'index'])->middleware(['auth', 'verified'])->name('categoriaespecifica');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

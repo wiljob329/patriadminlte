@@ -83,6 +83,11 @@ class Activo extends Model
         return $this->belongsTo(Sede::class, 'sede_id');
     }
 
+    public function tipoActivo()
+    {
+        return $this->belongsTo(TipoActivo::class, 'tipo_activo_id');
+    }
+
     public function unidadAdministrativa()
     {
         return $this->belongsTo(UnidadAdministrativa::class, 'unidad_administrativa_id');
@@ -97,5 +102,4 @@ class Activo extends Model
     {
         return $this->hasMany(Desincorporacion::class, 'activo_id');
     }
-
 }

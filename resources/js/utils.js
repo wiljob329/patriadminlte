@@ -1,41 +1,80 @@
-// funcion para llenar los options con descripcion
-export function fillSelect(select, url) {
+export function fillOptionSelect(select, afterUrl) {
+    let beforeUrl = "/api";
+    let url = beforeUrl + afterUrl;
     $(select).find("option").remove().end();
-    $.get(url, function (data) {
-        data.map((item) => {
-            select.append(
-                "<option value=" +
-                    item.id +
-                    ">" +
-                    item.descripcion +
-                    "</option>",
-            );
+    select.append("<option>Seleccionar</option>");
+    if (afterUrl === "/adquisiciones") {
+        $.get(url, function (data) {
+            data.map((item) => {
+                select.append(
+                    "<option value=" +
+                        item.id +
+                        ">" +
+                        item.adquisicion +
+                        "</option>",
+                );
+            });
         });
-    });
+    }
+    if (afterUrl === "/condicion") {
+        $.get(url, function (data) {
+            data.map((item) => {
+                select.append(
+                    "<option value=" +
+                        item.id +
+                        ">" +
+                        item.condicion +
+                        "</option>",
+                );
+            });
+        });
+    }
+    if (afterUrl === "/color") {
+        $.get(url, function (data) {
+            data.map((item) => {
+                select.append(
+                    "<option value=" + item.id + ">" + item.color + "</option>",
+                );
+            });
+        });
+    }
+    if (afterUrl === "/estado") {
+        $.get(url, function (data) {
+            data.map((item) => {
+                select.append(
+                    "<option value=" +
+                        item.id +
+                        ">" +
+                        item.estado +
+                        "</option>",
+                );
+            });
+        });
+    }
+    if (afterUrl === "/tipos") {
+        $.get(url, function (data) {
+            data.map((item) => {
+                select.append(
+                    "<option value=" + item.id + ">" + item.tipo + "</option>",
+                );
+            });
+        });
+    }
+    if (afterUrl === "/monedas") {
+        $.get(url, function (data) {
+            data.map((item) => {
+                select.append(
+                    "<option value=" +
+                        item.id +
+                        ">" +
+                        item.moneda +
+                        "</option>",
+                );
+            });
+        });
+    }
 }
 
-// funcion para llenar los options con nombre
-export function fillSelect2(select, url) {
-    $(select).find("option").remove().end();
-    $.get(url, function (data) {
-        data.map((item) => {
-            select.append(
-                "<option value=" + item.id + ">" + item.nombre + "</option>",
-            );
-        });
-    });
-}
-
-export function fillSelectEstado(select, url) {
-    $(select).find("option").remove().end();
-    $.get(url, function (data) {
-        data.map((item) => {
-            select.append(
-                "<option value=" + item.id + ">" + item.estado + "</option>",
-            );
-        });
-    });
-}
 //funcion para chequear y colocar datos en el formulario
 export function fillForm(data, condicion, visual, uris) {
     $("#codigo" + (visual === "show" ? visual : ""))

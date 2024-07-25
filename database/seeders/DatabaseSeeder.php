@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(monedas_seeder::class);
         $this->call(sedes_seeder::class);
         $this->call(unidades_administrativas_seeder::class);
+        $this->call(tipo_activos_seeder::class);
         //\App\Models\User::factory(1)->create();
 
         \App\Models\User::factory()->create([
@@ -39,8 +40,8 @@ class DatabaseSeeder extends Seeder
 
         Ubicacion::factory(5)->create();
         Responsable::factory(10)
-                    ->has(Activo::factory()->count(2))
-                    ->create();
+            ->has(Activo::factory()->count(2))
+            ->create();
         // \App\Models\Responsable::factory(100)->create();
         // \App\Models\Customer::factory(1000)->create();
     }

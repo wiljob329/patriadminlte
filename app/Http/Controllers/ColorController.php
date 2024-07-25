@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActColor;
+use App\Models\Color;
 use Illuminate\Http\Request;
 
-class ActColorController extends Controller
+class ColorController extends Controller
 {
     public function index(Request $request)
     {
@@ -18,7 +18,7 @@ class ActColorController extends Controller
         });
         return response()->json($marcasConActivos); */
 
-        $color = ActColor::all();
+        $color = Color::all();
         // $color->activo;
 
         return response()->json($color);

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActAdquisicione;
+use App\Models\FormaAdquisicion;
 use Illuminate\Http\Request;
 
-class ActAdquisicioneController extends Controller
+class FormaAdquisicionController extends Controller
 {
     public function index(Request $request)
     {
-        $adquisiciones = ActAdquisicione::all();
+        $adquisiciones = FormaAdquisicion::all();
 
         return response()->json($adquisiciones);
 
