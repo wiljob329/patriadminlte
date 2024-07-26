@@ -66,6 +66,7 @@ $(function () {
         //     "<input id='' class='form-control' name='marca' value='' type='text' placeholder='marca' >",
         // );
         $("#marcaModal").on("show.bs.modal", (e) => {
+            console.log(e.target.dataset.name);
             let baseUrl = $("meta[name=app-url]").attr("content");
             let url = baseUrl + "/marcas";
             let marcaTable = $(".yajra-datatable-marca").DataTable(
@@ -120,31 +121,33 @@ $(function () {
         $("#responsableModal").on("show.bs.modal", (e) => {
             let baseUrl = $("meta[name=app-url]").attr("content");
             let url = baseUrl + "/responsables";
-            let responsableTable = $(
-                ".yajra-datatable-responsable",
-            ).DataTable(responsablesActivosOptUrl(url));
-            $(".yajra-datatable-responsable tbody").on("click", "tr", function () {
-                // let codigoCat = $(this).text().substr(-9);
-                // let nombreCat = $(this).text().slice(0, -9);
-                console.log($(this).text())
-                if ($(this).hasClass("selected")) {
-                    createResponsableInput.val($(this).text());
-                    $(this).removeClass("selected");
-                    $("#responsableModal").modal("hide");
-                    // $(this).stopPropagation();
-                } else {
-                    responsableTable
-                        .$("tr.selected")
-                        .removeClass("selected");
-                    $(this).addClass("selected");
-                    // $(this).stopPropagation();
-                }
-            });
+            let responsableTable = $(".yajra-datatable-responsable").DataTable(
+                responsablesActivosOptUrl(url, createResponsableInput.val()),
+            );
+            $(".yajra-datatable-responsable tbody").on(
+                "click",
+                "tr",
+                function () {
+                    let nombre = $(this.cells)[0].textContent;
+                    let cargo = $(this.cells)[1].textContent;
+                    let respon = nombre + "-" + cargo;
+
+                    if ($(this).hasClass("selected")) {
+                        createResponsableInput.val(nombre);
+                        $(this).removeClass("selected");
+                        $("#responsableModal").modal("hide");
+                    } else {
+                        responsableTable
+                            .$("tr.selected")
+                            .removeClass("selected");
+                        $(this).addClass("selected");
+                    }
+                },
+            );
         });
         $("#responsableModal").on("hide.bs.modal", (e) => {
             $(".yajra-datatable-responsable").DataTable().destroy();
             $(".yajra-datatable-responsable tbody").unbind();
         });
-
     }
 });

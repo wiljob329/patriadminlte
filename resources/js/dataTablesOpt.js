@@ -91,7 +91,7 @@ export const categoriaEspecificaOptUrl = (url) => {
     };
 };
 
-export const responsablesActivosOptUrl = (url) => {
+export const responsablesActivosOptUrl = (url, respon = "") => {
     return {
         processing: true,
         layout: {
@@ -106,6 +106,9 @@ export const responsablesActivosOptUrl = (url) => {
         responsive: true,
         selected: true,
         ajax: url,
+        search: {
+            search: respon,
+        },
         columns: [
             { data: "responsable" },
             { data: "cargo" },

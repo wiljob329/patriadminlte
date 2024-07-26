@@ -162,11 +162,10 @@
             <x-adminlte-input type="text" label="Marca" name="marca" fgroup-class="col" placeholder="Marca"
                 id="marca">
                 <x-slot name="prependSlot">
-                    <div class="input-group-text text-primary">
-                        <a href="#" data-toggle="modal" data-target="#marcaModal">
-                            <i class="fas fa-search"></i>
-                        </a>
-                    </div>
+                    <a class="input-group-text text-primary" href="#" data-toggle="modal"
+                        data-target="#marcaModal" data-name-modal="marModal" id="showModal">
+                        <i class="fas fa-search"></i>
+                    </a>
                 </x-slot>
             </x-adminlte-input>
             <x-adminlte-input type="text" label="Modelo" name="modelo" fgroup-class="col" placeholder="Modelo"
@@ -236,11 +235,10 @@
             <x-adminlte-input type="text" label="Categoria" name="categoriaesp" fgroup-class="col"
                 placeholder="Categoria" id="categoriaesp">
                 <x-slot name="prependSlot">
-                    <div class="input-group-text text-primary">
-                        <a href="#" data-toggle="modal" data-target="#categoriaModal">
-                            <i class="fas fa-search"></i>
-                        </a>
-                    </div>
+                    <a class="input-group-text text-primary" href="#" data-toggle="modal"
+                        data-target="#categoriaModal" data-name-modal="catModal" id="showModal">
+                        <i class="fas fa-search"></i>
+                    </a>
                 </x-slot>
             </x-adminlte-input>
         </div>
@@ -256,11 +254,10 @@
             <x-adminlte-input type="text" label="Responsable" name="responsable" fgroup-class="col"
                 placeholder="Responsable" id="responsable">
                 <x-slot name="prependSlot">
-                    <div class="input-group-text text-primary">
-                        <a href="#" data-toggle="modal" data-target="#responsableModal">
-                            <i class="fas fa-search"></i>
-                        </a>
-                    </div>
+                    <a href="#" class="input-group-text text-primary" data-toggle="modal"
+                        data-target="#responsableModal" data-name-modal="resModal"id="showModal">
+                        <i class="fas fa-search"></i>
+                    </a>
                 </x-slot>
             </x-adminlte-input>
         </div>
@@ -269,9 +266,9 @@
 
 
 <x-adminlte-modal id="categoriaModal" title="Categorias" size="lg" theme="primary"
-    icon="fa fa-lg fa-fw fa-search" v-centered static-backdrop>
+    icon="fa fa-lg fa-fw fa-search" v-centered static-backdrop data-name="categoria">
     <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
-        <table class="table yajra-datatable-cat" style="padding-top:10px;width: 100%;">
+        <table class="table yajra-datatable-cat table-bordered" style="padding-top:10px;width: 100%;">
             <thead style="width: 100%;">
                 <tr style="width: 100%;">
                     <th>Categoria especifica</th>
@@ -285,7 +282,7 @@
 </x-adminlte-modal>
 
 <x-adminlte-modal id="marcaModal" title="Marcas" size="lg" theme="primary" icon="fa fa-lg fa-fw fa-search"
-    v-centered static-backdrop>
+    v-centered static-backdrop data-name="marca">
     <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
         <table class="table yajra-datatable-marca table-bordered" style="padding-top:10px;width:100%;">
             <thead style="width:100%;">
@@ -302,9 +299,9 @@
 </x-adminlte-modal>
 
 <x-adminlte-modal id="responsableModal" title="Responsables" size="lg" theme="primary"
-    icon="fa fa-lg fa-fw fa-search" v-centered static-backdrop>
+    icon="fa fa-lg fa-fw fa-search" v-centered static-backdrop data-name="responsable">
     <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
-        <table class="table yajra-datatable-responsable" style="padding-top:10px;width: 100%;">
+        <table class="table yajra-datatable-responsable table-bordered" style="padding-top:10px;width:100%;">
             <thead style="width: 100%;">
                 <tr style="width: 100%;">
                     <th>Responsable</th>
