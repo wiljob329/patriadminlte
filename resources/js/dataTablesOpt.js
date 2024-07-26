@@ -107,7 +107,7 @@ export const responsablesActivosOptUrl = (url) => {
         selected: true,
         ajax: url,
         columns: [
-            { data: "responsable.nombre" },
+            { data: "responsable" },
             { data: "cargo" },
             { data: "division" },
             { data: "gerencia" },

@@ -14,6 +14,10 @@ class ResponsableActivoController extends Controller
 
         return DataTables::of($responsable)
             ->addIndexColumn()
+            ->addColumn('responsable', function ($row){
+                $responsable = $row->nombre . " " . $row->apellido;
+                return $responsable;
+            })
             ->addColumn('cargo', function ($row) {
                 $est = $row->cargo;
 

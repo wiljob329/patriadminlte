@@ -39,8 +39,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Ubicacion::factory(5)->create();
-        Responsable::factory(10)
-            ->has(Activo::factory()->count(2))
+        Responsable::factory(500)
+            ->has(Activo::factory()->count(4))
             ->create();
         // \App\Models\Responsable::factory(100)->create();
         // \App\Models\Customer::factory(1000)->create();

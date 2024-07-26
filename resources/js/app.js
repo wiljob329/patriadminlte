@@ -21,6 +21,7 @@ const Uris = {
 };
 const createMarcaInput = $("#marca");
 const createCategoriaEspInput = $("#categoriaesp");
+const createResponsableInput = $("#responsable");
 
 $(function () {
     const card = document.querySelector("#card-datatable");
@@ -119,21 +120,20 @@ $(function () {
         $("#responsableModal").on("show.bs.modal", (e) => {
             let baseUrl = $("meta[name=app-url]").attr("content");
             let url = baseUrl + "/responsables";
-            let categoriaEspecificaTable = $(
+            let responsableTable = $(
                 ".yajra-datatable-responsable",
             ).DataTable(responsablesActivosOptUrl(url));
-            $(".yajra-datatable-cat tbody").on("click", "tr", function () {
-                let codigoCat = $(this).text().substr(-9);
-                let nombreCat = $(this).text().slice(0, -9);
+            $(".yajra-datatable-responsable tbody").on("click", "tr", function () {
+                // let codigoCat = $(this).text().substr(-9);
+                // let nombreCat = $(this).text().slice(0, -9);
+                console.log($(this).text())
                 if ($(this).hasClass("selected")) {
-                    createCategoriaEspInput.val(
-                        nombreCat + " (" + codigoCat + ")",
-                    );
+                    createResponsableInput.val($(this).text());
                     $(this).removeClass("selected");
-                    $("#categoriaModal").modal("hide");
+                    $("#responsableModal").modal("hide");
                     // $(this).stopPropagation();
                 } else {
-                    categoriaEspecificaTable
+                    responsableTable
                         .$("tr.selected")
                         .removeClass("selected");
                     $(this).addClass("selected");
@@ -141,5 +141,10 @@ $(function () {
                 }
             });
         });
+        $("#responsableModal").on("hide.bs.modal", (e) => {
+            $(".yajra-datatable-responsable").DataTable().destroy();
+            $(".yajra-datatable-responsable tbody").unbind();
+        });
+
     }
 });
