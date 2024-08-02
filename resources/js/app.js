@@ -21,6 +21,7 @@ const Uris = {
     tipourl: "/tipos",
     estadourl: "/estado",
     monedaurl: "/monedas",
+    catespecifica: "/categoriaespecificas",
 };
 const createMarcaInput = $("#marca");
 const createCategoriaEspInput = $("#categoriaesp");
@@ -52,28 +53,12 @@ $(function () {
         // $("#marca").replaceWith(
         //     "<input id='' class='form-control' name='marca' value='' type='text' placeholder='marca' >",
         // );
-        // $("#marcaModal").on("show.bs.modal", (e) => {
-        //     // console.log(e.target.dataset.name);
-        //     let baseUrl = $("meta[name=app-url]").attr("content");
-        //     let url = baseUrl + "/marcas";
-        //     let marcaTable = $(".yajra-datatable-marca").DataTable(
-        //         marcaOptUrl(url),
-        //     );
-        //     $(".yajra-datatable-marca tbody").on("click", "tr", function () {
-        //         if ($(this).hasClass("selected")) {
-        //             createMarcaInput.val($.trim($(this).text()));
-        //             $(this).removeClass("selected");
-        //             $("#marcaModal").modal("hide");
-        //         } else {
-        //             marcaTable.$("tr.selected").removeClass("selected");
-        //             $(this).addClass("selected");
-        //         }
-        //     });
-        // });
-        // $("#marcaModal").on("hide.bs.modal", (e) => {
-        //     $(".yajra-datatable-marca").DataTable().destroy();
-        //     $(".yajra-datatable-marca tbody").unbind();
-        // });
+        modalSet(
+            $("#categoriaModal"),
+            Uris.catespecifica,
+            $(".yajra-datatable-cat"),
+            categoriaEspecificaOptUrl,
+        );
         $("#categoriaModal").on("show.bs.modal", (e) => {
             let baseUrl = $("meta[name=app-url]").attr("content");
             let url = baseUrl + "/categoriaespecificas";
