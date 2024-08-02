@@ -7,6 +7,9 @@ import {
     marcaOptUrl,
     responsablesActivosOptUrl,
 } from "./dataTablesOpt";
+import { dataTableActivoSet } from "./dataTableActivoSet";
+import { dataTableMarcaSet } from "./dataTableMarcaSet";
+import { modalSet } from "./modalSet";
 
 //import Alpine from 'alpinejs';
 
@@ -29,31 +32,7 @@ $(function () {
     const catModal = document.querySelector("#categoriaModal");
 
     if (isInViewport(card)) {
-        var table = $(".yajra-datatable").DataTable(activoOpt);
-        $(".yajra-datatable tbody").on("click", "tr", function () {
-            if ($(this).hasClass("selected")) {
-                $(this).removeClass("selected");
-                $(this).stopPropagation();
-            } else {
-                table.$("tr.selected").removeClass("selected");
-                $(this).addClass("selected");
-                // $(this).stopPropagation();
-            }
-        });
-        $(".yajra-datatable tbody").on("click", "#showActivo", function () {
-            let activoURL = $(this).data("url");
-            $.get(activoURL, function (data) {
-                fillForm(data, true, "show", Uris);
-                $("#modalShow").modal("show");
-            });
-        });
-        $(".yajra-datatable tbody").on("click", "#editActivo", function () {
-            let activoURL = $(this).data("url");
-            $.get(activoURL, function (data) {
-                fillForm(data, false, "", Uris);
-                $("#modalEdit").modal("show");
-            });
-        });
+        dataTableActivoSet($(".yajra-datatable"), activoOpt);
     }
     if (isInViewport(createc)) {
         fillOptionSelect($("#adquisicion"), Uris.adquisicionurl);
@@ -62,33 +41,39 @@ $(function () {
         fillOptionSelect($("#estado"), Uris.estadourl);
         fillOptionSelect($("#tipo"), Uris.tipourl);
         fillOptionSelect($("#moneda"), Uris.monedaurl);
+        modalSet(
+            $("#marcaModal"),
+            Uris.marcaurl,
+            $(".yajra-datatable-marca"),
+            marcaOptUrl,
+            dataTableMarcaSet,
+            createMarcaInput,
+        );
         // $("#marca").replaceWith(
         //     "<input id='' class='form-control' name='marca' value='' type='text' placeholder='marca' >",
         // );
-        $("#marcaModal").on("show.bs.modal", (e) => {
-            console.log(e.target.dataset.name);
-            let baseUrl = $("meta[name=app-url]").attr("content");
-            let url = baseUrl + "/marcas";
-            let marcaTable = $(".yajra-datatable-marca").DataTable(
-                marcaOptUrl(url),
-            );
-            $(".yajra-datatable-marca tbody").on("click", "tr", function () {
-                if ($(this).hasClass("selected")) {
-                    createMarcaInput.val($.trim($(this).text()));
-                    $(this).removeClass("selected");
-                    $("#marcaModal").modal("hide");
-                    // $(this).stopPropagation();
-                } else {
-                    marcaTable.$("tr.selected").removeClass("selected");
-                    $(this).addClass("selected");
-                    // $(this).stopPropagation();
-                }
-            });
-        });
-        $("#marcaModal").on("hide.bs.modal", (e) => {
-            $(".yajra-datatable-marca").DataTable().destroy();
-            $(".yajra-datatable-marca tbody").unbind();
-        });
+        // $("#marcaModal").on("show.bs.modal", (e) => {
+        //     // console.log(e.target.dataset.name);
+        //     let baseUrl = $("meta[name=app-url]").attr("content");
+        //     let url = baseUrl + "/marcas";
+        //     let marcaTable = $(".yajra-datatable-marca").DataTable(
+        //         marcaOptUrl(url),
+        //     );
+        //     $(".yajra-datatable-marca tbody").on("click", "tr", function () {
+        //         if ($(this).hasClass("selected")) {
+        //             createMarcaInput.val($.trim($(this).text()));
+        //             $(this).removeClass("selected");
+        //             $("#marcaModal").modal("hide");
+        //         } else {
+        //             marcaTable.$("tr.selected").removeClass("selected");
+        //             $(this).addClass("selected");
+        //         }
+        //     });
+        // });
+        // $("#marcaModal").on("hide.bs.modal", (e) => {
+        //     $(".yajra-datatable-marca").DataTable().destroy();
+        //     $(".yajra-datatable-marca tbody").unbind();
+        // });
         $("#categoriaModal").on("show.bs.modal", (e) => {
             let baseUrl = $("meta[name=app-url]").attr("content");
             let url = baseUrl + "/categoriaespecificas";
@@ -104,13 +89,11 @@ $(function () {
                     );
                     $(this).removeClass("selected");
                     $("#categoriaModal").modal("hide");
-                    // $(this).stopPropagation();
                 } else {
                     categoriaEspecificaTable
                         .$("tr.selected")
                         .removeClass("selected");
                     $(this).addClass("selected");
-                    // $(this).stopPropagation();
                 }
             });
         });
