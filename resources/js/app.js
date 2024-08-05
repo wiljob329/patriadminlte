@@ -10,6 +10,8 @@ import {
 import { dataTableActivoSet } from "./dataTableActivoSet";
 import { dataTableMarcaSet } from "./dataTableMarcaSet";
 import { modalSet } from "./modalSet";
+import { dataTableCategoriaSet } from "./dataTableCategoriaSet";
+import { dataTableResponSet } from "./dataTableResponSet";
 
 //import Alpine from 'alpinejs';
 
@@ -22,6 +24,7 @@ const Uris = {
     estadourl: "/estado",
     monedaurl: "/monedas",
     catespecifica: "/categoriaespecificas",
+    responsables: "/responsables",
 };
 const createMarcaInput = $("#marca");
 const createCategoriaEspInput = $("#categoriaesp");
@@ -30,7 +33,6 @@ const createResponsableInput = $("#responsable");
 $(function () {
     const card = document.querySelector("#card-datatable");
     const createc = document.querySelector("#card-create");
-    const catModal = document.querySelector("#categoriaModal");
 
     if (isInViewport(card)) {
         dataTableActivoSet($(".yajra-datatable"), activoOpt);
@@ -58,64 +60,16 @@ $(function () {
             Uris.catespecifica,
             $(".yajra-datatable-cat"),
             categoriaEspecificaOptUrl,
+            dataTableCategoriaSet,
+            createCategoriaEspInput,
         );
-        $("#categoriaModal").on("show.bs.modal", (e) => {
-            let baseUrl = $("meta[name=app-url]").attr("content");
-            let url = baseUrl + "/categoriaespecificas";
-            let categoriaEspecificaTable = $(".yajra-datatable-cat").DataTable(
-                categoriaEspecificaOptUrl(url),
-            );
-            $(".yajra-datatable-cat tbody").on("click", "tr", function () {
-                let codigoCat = $(this).text().substr(-9);
-                let nombreCat = $(this).text().slice(0, -9);
-                if ($(this).hasClass("selected")) {
-                    createCategoriaEspInput.val(
-                        nombreCat + " (" + codigoCat + ")",
-                    );
-                    $(this).removeClass("selected");
-                    $("#categoriaModal").modal("hide");
-                } else {
-                    categoriaEspecificaTable
-                        .$("tr.selected")
-                        .removeClass("selected");
-                    $(this).addClass("selected");
-                }
-            });
-        });
-        $("#categoriaModal").on("hide.bs.modal", (e) => {
-            $(".yajra-datatable-cat").DataTable().destroy();
-            $(".yajra-datatable-cat tbody").unbind();
-        });
-        $("#responsableModal").on("show.bs.modal", (e) => {
-            let baseUrl = $("meta[name=app-url]").attr("content");
-            let url = baseUrl + "/responsables";
-            let responsableTable = $(".yajra-datatable-responsable").DataTable(
-                responsablesActivosOptUrl(url, createResponsableInput.val()),
-            );
-            $(".yajra-datatable-responsable tbody").on(
-                "click",
-                "tr",
-                function () {
-                    let nombre = $(this.cells)[0].textContent;
-                    let cargo = $(this.cells)[1].textContent;
-                    let respon = nombre + "-" + cargo;
-
-                    if ($(this).hasClass("selected")) {
-                        createResponsableInput.val(nombre);
-                        $(this).removeClass("selected");
-                        $("#responsableModal").modal("hide");
-                    } else {
-                        responsableTable
-                            .$("tr.selected")
-                            .removeClass("selected");
-                        $(this).addClass("selected");
-                    }
-                },
-            );
-        });
-        $("#responsableModal").on("hide.bs.modal", (e) => {
-            $(".yajra-datatable-responsable").DataTable().destroy();
-            $(".yajra-datatable-responsable tbody").unbind();
-        });
+        modalSet(
+            $("#responsableModal"),
+            Uris.responsables,
+            $(".yajra-datatable-responsable"),
+            responsablesActivosOptUrl,
+            dataTableResponSet,
+            createResponsableInput,
+        );
     }
 });
