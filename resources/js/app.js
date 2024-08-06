@@ -44,6 +44,10 @@ $(function () {
         fillOptionSelect($("#estado"), Uris.estadourl);
         fillOptionSelect($("#tipo"), Uris.tipourl);
         fillOptionSelect($("#moneda"), Uris.monedaurl);
+        $("#myTab button").on("click", (e) => {
+            e.preventDefault();
+            console.log($(this));
+        });
         modalSet(
             $("#marcaModal"),
             Uris.marcaurl,

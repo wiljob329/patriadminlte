@@ -7,8 +7,19 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="row justify-content-center">
-            <x-adminlte-card title="Creacion de Activo" theme="dark" class="mt-4 elevation-3 w-75" id="card-create">
+        <div class="row justify-content-center flex-column align-items-center">
+            <ul class="mt-4 mb-2 nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button"
+                        role="tab" aria-controls="home" aria-selected="true">Activo Normal</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile" type="button"
+                        role="tab" aria-controls="profile" aria-selected="false">Activo Vehiculo</button>
+                </li>
+            </ul>
+
+            <x-adminlte-card title="Creacion de Activo" theme="dark" class="elevation-3 w-75" id="card-create">
                 <x-slot name="toolsSlot">
                     <a href="{{ route('activos.index') }}" class="btn btn-warning btn-sm"><i class="fas fa-undo"></i>
                         Volver
