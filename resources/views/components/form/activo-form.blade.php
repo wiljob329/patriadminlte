@@ -262,6 +262,113 @@
             </x-adminlte-input>
         </div>
     @endisset
+    @isset($vehiculo)
+        <div class="form-row">
+            <x-adminlte-input type="text" label="Codigo Interno" name="codigo" fgroup-class="col"
+                placeholder="codigo" id="codigo" />
+            <x-adminlte-input type="text" label="Marca" name="marca" fgroup-class="col" placeholder="Marca"
+                id="marca">
+                <x-slot name="prependSlot">
+                    <a class="input-group-text text-primary" href="#" data-toggle="modal"
+                        data-target="#marcaModal" data-name-modal="marModal" id="showModal">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </x-slot>
+            </x-adminlte-input>
+            <x-adminlte-input type="text" label="Modelo" name="modelo" fgroup-class="col" placeholder="Modelo"
+                id="modelo" />
+            <x-adminlte-input type="text" label="Serial" name="serial" fgroup-class="col" placeholder="Serial"
+                id="serial" />
+        </div>
+        <div class="form-row">
+            <x-adminlte-input type="text" label="Descripcion" name="descripcion" fgroup-class="col"
+                placeholder="Descripcion" id="descripcion" />
+        </div>
+        <div class="form-row">
+            <x-adminlte-input type="text" label="Observaciones" name="observacion" fgroup-class="col"
+                placeholder="Observaciones" id="observacion" />
+        </div>
+        <div class="form-row">
+            <x-adminlte-select type="text" label="Condicion Fisica" name="condicion" fgroup-class="col"
+                placeholder="Condicion" id="condicion" />
+            <x-adminlte-select name="adquisicion" fgroup-class="col" label="Forma de Adquisicion" id="adquisicion">
+            </x-adminlte-select>
+            @php
+                $config = [
+                    'format' => 'DD/MM/YYYY',
+                    'dayViewHeaderFormat' => 'MMM YYYY',
+                    'daysOfWeekDisabled' => [0, 6],
+                ];
+            @endphp
+            <x-adminlte-input-date name="fecha_adquisicion" label="Fecha Adquisicion" :config="$config"
+                placeholder="Fecha Adquisicion" id="fecha_adquisicion" fgroup-class="col">
+                <x-slot name="appendSlot">
+                    <div class="input-group-text bg-gradient-primary">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </x-slot>
+            </x-adminlte-input-date>
+            <x-adminlte-select type="text" label="Moneda" name="moneda" fgroup-class="col" placeholder="Moneda"
+                id="moneda" />
+        </div>
+        <div class="form-row">
+            <x-adminlte-input type="text" label="Proveedor" name="proveedor" fgroup-class="col"
+                placeholder="Proveedor" id="proveedor" />
+            <x-adminlte-input type="text" label="Nro Factura" name="nro_factura" fgroup-class="col"
+                placeholder="Nro Factura" id="nro_factura" />
+            <x-adminlte-input type="text" label="Costo" name="costo" fgroup-class="col" placeholder="Costo"
+                id="costo" />
+            <x-adminlte-input type="text" label="Nro Orden" name="nro_orden" fgroup-class="col"
+                placeholder="Nro Orden" id="nro_orden" />
+        </div>
+
+        <div class="form-row">
+            <x-adminlte-input-date name="inicio_garantia" label="Inicio Garantia" :config="$config"
+                placeholder="Inicio Garantia" id="inicio_garantia" fgroup-class="col">
+                <x-slot name="appendSlot">
+                    <div class="input-group-text bg-gradient-primary">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </x-slot>
+            </x-adminlte-input-date>
+            <x-adminlte-input-date name="fin_garantia" label="Fin Garantia" :config="$config" placeholder="Fin Garantia"
+                id="fin_garantia" fgroup-class="col">
+                <x-slot name="appendSlot">
+                    <div class="input-group-text bg-gradient-primary">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </x-slot>
+            </x-adminlte-input-date>
+            <x-adminlte-input type="text" label="Categoria" name="categoriaesp" fgroup-class="col"
+                placeholder="Categoria" id="categoriaesp">
+                <x-slot name="prependSlot">
+                    <a class="input-group-text text-primary" href="#" data-toggle="modal"
+                        data-target="#categoriaModal" data-name-modal="catModal" id="showModal">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </x-slot>
+            </x-adminlte-input>
+        </div>
+        <div class="form-row">
+            <x-adminlte-select type="text" label="Color" name="color_id" fgroup-class="col" placeholder="Color"
+                id="color" />
+            <x-adminlte-select type="text" label="Tipo" name="tipo_id" fgroup-class="col" placeholder="Tipo"
+                id="tipo" />
+            <x-adminlte-select type="text" label="Estado" name="estado" fgroup-class="col" placeholder="Estado"
+                id="estado" />
+        </div>
+        <div class="form-row">
+            <x-adminlte-input type="text" label="Responsable" name="responsable" fgroup-class="col"
+                placeholder="Responsable" id="responsable">
+                <x-slot name="prependSlot">
+                    <a href="#" class="input-group-text text-primary" data-toggle="modal"
+                        data-target="#responsableModal" data-name-modal="resModal"id="showModal">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </x-slot>
+            </x-adminlte-input>
+        </div>
+    @endisset
 </form>
 
 

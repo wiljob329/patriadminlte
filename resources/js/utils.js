@@ -2,7 +2,9 @@ export function fillOptionSelect(select, afterUrl) {
     let beforeUrl = "/api";
     let url = beforeUrl + afterUrl;
     $(select).find("option").remove().end();
-    select.append("<option>Seleccionar</option>");
+    select.append(
+        "<option value='' selected disabled hidden >Seleccionar</option>",
+    );
     if (afterUrl === "/adquisiciones") {
         $.get(url, function (data) {
             data.map((item) => {

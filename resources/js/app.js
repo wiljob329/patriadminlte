@@ -34,6 +34,14 @@ $(function () {
     const card = document.querySelector("#card-datatable");
     const createc = document.querySelector("#card-create");
 
+    if (
+        $("#card-create-vehiculo").is(":visible") &&
+        $("#card-create-vehiculo").css("visibility") != "hidden" &&
+        $("#card-create-vehiculo").css("opacity") > 0
+    ) {
+        console.log("el vehiculo esta visible");
+    }
+
     if (isInViewport(card)) {
         dataTableActivoSet($(".yajra-datatable"), activoOpt);
     }
@@ -44,9 +52,9 @@ $(function () {
         fillOptionSelect($("#estado"), Uris.estadourl);
         fillOptionSelect($("#tipo"), Uris.tipourl);
         fillOptionSelect($("#moneda"), Uris.monedaurl);
-        $("#myTab button").on("click", (e) => {
-            e.preventDefault();
-            console.log($(this));
+        $("#myTab button").on("shown.bs.tab", (e) => {
+            e.target.classList.add("bg-primary");
+            e.relatedTarget.classList.remove("bg-primary");
         });
         modalSet(
             $("#marcaModal"),
