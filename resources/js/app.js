@@ -1,6 +1,6 @@
 //import { document } from "postcss";
 import "./bootstrap";
-import { fillForm, fillOptionSelect, isInViewport } from "./utils";
+import { fillOptionSelect, isInViewport } from "./utils";
 import {
     activoOpt,
     categoriaEspecificaOptUrl,
@@ -34,16 +34,8 @@ $(function () {
     const card = document.querySelector("#card-datatable");
     const createc = document.querySelector("#card-create");
 
-    if (
-        $("#card-create-vehiculo").is(":visible") &&
-        $("#card-create-vehiculo").css("visibility") != "hidden" &&
-        $("#card-create-vehiculo").css("opacity") > 0
-    ) {
-        console.log("el vehiculo esta visible");
-    }
-
     if (isInViewport(card)) {
-        dataTableActivoSet($(".yajra-datatable"), activoOpt);
+        dataTableActivoSet($(".yajra-datatable"), activoOpt, Uris);
     }
     if (isInViewport(createc)) {
         fillOptionSelect($("#adquisicion"), Uris.adquisicionurl);
@@ -55,6 +47,14 @@ $(function () {
         $("#myTab button").on("shown.bs.tab", (e) => {
             e.target.classList.add("bg-primary");
             e.relatedTarget.classList.remove("bg-primary");
+            if (e.target.dataset.target === "#card-create-vehiculo") {
+                fillOptionSelect($("#adquisicion-vehi"), Uris.adquisicionurl);
+                fillOptionSelect($("#condicion-vehi"), Uris.condicionurl);
+                fillOptionSelect($("#color-vehi"), Uris.colorurl);
+                fillOptionSelect($("#estado-vehi"), Uris.estadourl);
+                fillOptionSelect($("#tipo-vehi"), Uris.tipourl);
+                fillOptionSelect($("#moneda-vehi"), Uris.monedaurl);
+            }
         });
         modalSet(
             $("#marcaModal"),

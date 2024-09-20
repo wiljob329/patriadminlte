@@ -139,7 +139,7 @@
                 placeholder="Inicio Garantia" id="inicio_garantiashow" />
             <x-adminlte-input type="text" label="Fin Garantia" name="fin_garantia" fgroup-class="col"
                 placeholder="Fin Garantia" id="fin_garantiashow" />
-            <x-adminlte-input type="text" label="Categoria" name="categoriaesp" fgroup-class="col"
+            <x-adminlte-input type="text" label="Categoria Especifica" name="categoriaesp" fgroup-class="col"
                 placeholder="Categoria" id="categoriaespshow" />
             <x-adminlte-input type="text" label="Asignado" name="asignado" fgroup-class="col" placeholder="Asignado"
                 id="asignadoshow" />
@@ -264,10 +264,10 @@
     @endisset
     @isset($vehiculo)
         <div class="form-row">
-            <x-adminlte-input type="text" label="Codigo Interno" name="codigo" fgroup-class="col"
-                placeholder="codigo" id="codigo" />
-            <x-adminlte-input type="text" label="Marca" name="marca" fgroup-class="col" placeholder="Marca"
-                id="marca">
+            <x-adminlte-input type="text" label="Codigo Interno" name="codigo-vehi" fgroup-class="col"
+                placeholder="codigo" id="codigo-vehi" />
+            <x-adminlte-input type="text" label="Marca" name="marca-vehi" fgroup-class="col" placeholder="Marca"
+                id="marca-vehi">
                 <x-slot name="prependSlot">
                     <a class="input-group-text text-primary" href="#" data-toggle="modal"
                         data-target="#marcaModal" data-name-modal="marModal" id="showModal">
@@ -275,23 +275,24 @@
                     </a>
                 </x-slot>
             </x-adminlte-input>
-            <x-adminlte-input type="text" label="Modelo" name="modelo" fgroup-class="col" placeholder="Modelo"
-                id="modelo" />
-            <x-adminlte-input type="text" label="Serial" name="serial" fgroup-class="col" placeholder="Serial"
-                id="serial" />
+            <x-adminlte-input type="text" label="Modelo" name="modelo-vehi" fgroup-class="col" placeholder="Modelo"
+                id="modelo-vehi" />
+            <x-adminlte-input type="text" label="Serial" name="serial-vehi" fgroup-class="col" placeholder="Serial"
+                id="serial-vehi" />
         </div>
         <div class="form-row">
-            <x-adminlte-input type="text" label="Descripcion" name="descripcion" fgroup-class="col"
-                placeholder="Descripcion" id="descripcion" />
+            <x-adminlte-input type="text" label="Descripcion" name="descripcion-vehi" fgroup-class="col"
+                placeholder="Descripcion" id="descripcion-vehi" />
         </div>
         <div class="form-row">
-            <x-adminlte-input type="text" label="Observaciones" name="observacion" fgroup-class="col"
-                placeholder="Observaciones" id="observacion" />
+            <x-adminlte-input type="text" label="Observaciones" name="observacion-vehi" fgroup-class="col"
+                placeholder="Observaciones" id="observacion-vehi" />
         </div>
         <div class="form-row">
-            <x-adminlte-select type="text" label="Condicion Fisica" name="condicion" fgroup-class="col"
-                placeholder="Condicion" id="condicion" />
-            <x-adminlte-select name="adquisicion" fgroup-class="col" label="Forma de Adquisicion" id="adquisicion">
+            <x-adminlte-select type="text" label="Condicion Fisica" name="condicion-vehi" fgroup-class="col"
+                placeholder="Condicion" id="condicion-vehi" />
+            <x-adminlte-select name="adquisicion-vehi" fgroup-class="col" label="Forma de Adquisicion"
+                id="adquisicion-vehi">
             </x-adminlte-select>
             @php
                 $config = [
@@ -300,47 +301,47 @@
                     'daysOfWeekDisabled' => [0, 6],
                 ];
             @endphp
-            <x-adminlte-input-date name="fecha_adquisicion" label="Fecha Adquisicion" :config="$config"
-                placeholder="Fecha Adquisicion" id="fecha_adquisicion" fgroup-class="col">
+            <x-adminlte-input-date name="fecha_adquisicion-vehi" label="Fecha Adquisicion" :config="$config"
+                placeholder="Fecha Adquisicion" id="fecha_adquisicion-vehi" fgroup-class="col">
                 <x-slot name="appendSlot">
                     <div class="input-group-text bg-gradient-primary">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                 </x-slot>
             </x-adminlte-input-date>
-            <x-adminlte-select type="text" label="Moneda" name="moneda" fgroup-class="col" placeholder="Moneda"
-                id="moneda" />
+            <x-adminlte-select type="text" label="Moneda" name="moneda-vehi" fgroup-class="col" placeholder="Moneda"
+                id="moneda-vehi" />
         </div>
         <div class="form-row">
-            <x-adminlte-input type="text" label="Proveedor" name="proveedor" fgroup-class="col"
-                placeholder="Proveedor" id="proveedor" />
-            <x-adminlte-input type="text" label="Nro Factura" name="nro_factura" fgroup-class="col"
-                placeholder="Nro Factura" id="nro_factura" />
-            <x-adminlte-input type="text" label="Costo" name="costo" fgroup-class="col" placeholder="Costo"
-                id="costo" />
-            <x-adminlte-input type="text" label="Nro Orden" name="nro_orden" fgroup-class="col"
-                placeholder="Nro Orden" id="nro_orden" />
+            <x-adminlte-input type="text" label="Proveedor" name="proveedor-vehi" fgroup-class="col"
+                placeholder="Proveedor" id="proveedor-vehi" />
+            <x-adminlte-input type="text" label="Nro Factura" name="nro_factura-vehi" fgroup-class="col"
+                placeholder="Nro Factura" id="nro_factura-vehi" />
+            <x-adminlte-input type="text" label="Costo" name="costo-vehi" fgroup-class="col" placeholder="Costo"
+                id="costo-vehi" />
+            <x-adminlte-input type="text" label="Nro Orden" name="nro_orden-vehi" fgroup-class="col"
+                placeholder="Nro Orden" id="nro_orden-vehi" />
         </div>
 
         <div class="form-row">
-            <x-adminlte-input-date name="inicio_garantia" label="Inicio Garantia" :config="$config"
-                placeholder="Inicio Garantia" id="inicio_garantia" fgroup-class="col">
+            <x-adminlte-input-date name="inicio_garantia-vehi" label="Inicio Garantia" :config="$config"
+                placeholder="Inicio Garantia" id="inicio_garantia-vehi" fgroup-class="col">
                 <x-slot name="appendSlot">
                     <div class="input-group-text bg-gradient-primary">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                 </x-slot>
             </x-adminlte-input-date>
-            <x-adminlte-input-date name="fin_garantia" label="Fin Garantia" :config="$config" placeholder="Fin Garantia"
-                id="fin_garantia" fgroup-class="col">
+            <x-adminlte-input-date name="fin_garantia-vehi" label="Fin Garantia" :config="$config"
+                placeholder="Fin Garantia" id="fin_garantia-vehi" fgroup-class="col">
                 <x-slot name="appendSlot">
                     <div class="input-group-text bg-gradient-primary">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                 </x-slot>
             </x-adminlte-input-date>
-            <x-adminlte-input type="text" label="Categoria" name="categoriaesp" fgroup-class="col"
-                placeholder="Categoria" id="categoriaesp">
+            <x-adminlte-input type="text" label="Categoria" name="categoriaesp-vehi" fgroup-class="col"
+                placeholder="Categoria" id="categoriaesp-vehi">
                 <x-slot name="prependSlot">
                     <a class="input-group-text text-primary" href="#" data-toggle="modal"
                         data-target="#categoriaModal" data-name-modal="catModal" id="showModal">
@@ -350,31 +351,48 @@
             </x-adminlte-input>
         </div>
         <div class="form-row">
-            <x-adminlte-select type="text" label="Color" name="color_id" fgroup-class="col" placeholder="Color"
-                id="color" />
-            <x-adminlte-select type="text" label="Tipo" name="tipo_id" fgroup-class="col" placeholder="Tipo"
-                id="tipo" />
-            <x-adminlte-select type="text" label="Estado" name="estado" fgroup-class="col" placeholder="Estado"
-                id="estado" />
+            <x-adminlte-select type="text" label="Color" name="color_id-vehi" fgroup-class="col"
+                placeholder="Color" id="color-vehi" />
+            <x-adminlte-select type="text" label="Tipo" name="tipo_id-vehi" fgroup-class="col" placeholder="Tipo"
+                id="tipo-vehi" />
+            <x-adminlte-select type="text" label="Estado" name="estado-vehi" fgroup-class="col" placeholder="Estado"
+                id="estado-vehi" />
         </div>
         <div class="form-row">
-            <x-adminlte-input type="text" label="Responsable" name="responsable" fgroup-class="col"
-                placeholder="Responsable" id="responsable">
+            <x-adminlte-input type="text" label="Responsable" name="responsable-vehi" fgroup-class="col"
+                placeholder="Responsable" id="responsable-vehi">
                 <x-slot name="prependSlot">
                     <a href="#" class="input-group-text text-primary" data-toggle="modal"
-                        data-target="#responsableModal" data-name-modal="resModal"id="showModal">
+                        data-target="#testingModal" data-name-modal="resModal-vehi" id="showModal-vehi">
                         <i class="fas fa-search"></i>
                     </a>
                 </x-slot>
             </x-adminlte-input>
         </div>
+        <div class="form-row">
+            <x-adminlte-input type="text" label="Serial Carroseria" name="serial-carroseria-vehi" fgroup-class="col"
+                placeholder="Serial Carroseria" id="serial-carroseria-vehi" />
+            <x-adminlte-input type="text" label="Año Fabricación" name="anio_fabricacion-vehi" fgroup-class="col"
+                placeholder="Año Fabricación" id="anio_fabricacion-vehi" />
+            <x-adminlte-input type="text" label="Serial Motor" name="serial_motor-vehi" fgroup-class="col"
+                placeholder="Serial Motor" id="serial_motor-vehi" />
+            <x-adminlte-input type="text" label="Placa" name="placa-vehi" fgroup-class="col" placeholder="Placa"
+                id="serial-carroseria-vehi" />
+        </div>
     @endisset
 </form>
+
+<x-adminlte-modal id="testingModal" title="Testing" size="lg" theme="primary" icon="fa fa-lg fa-fw fa-search"
+    v-centered static-backdrop data-name="marca">
+    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable-marca">
+        <h1>Testing</h1>
+    </x-adminlte-card>
+</x-adminlte-modal>
 
 
 <x-adminlte-modal id="categoriaModal" title="Categorias" size="lg" theme="primary"
     icon="fa fa-lg fa-fw fa-search" v-centered static-backdrop data-name="categoria">
-    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
+    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable-categoria">
         <table class="table yajra-datatable-cat table-bordered" style="padding-top:10px;width: 100%;">
             <thead style="width: 100%;">
                 <tr style="width: 100%;">
@@ -390,7 +408,7 @@
 
 <x-adminlte-modal id="marcaModal" title="Marcas" size="lg" theme="primary" icon="fa fa-lg fa-fw fa-search"
     v-centered static-backdrop data-name="marca">
-    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
+    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable-marca">
         <table class="table yajra-datatable-marca table-bordered" style="padding-top:10px;width:100%;">
             <thead style="width:100%;">
                 <tr style="width:100%">
@@ -407,7 +425,7 @@
 
 <x-adminlte-modal id="responsableModal" title="Responsables" size="lg" theme="primary"
     icon="fa fa-lg fa-fw fa-search" v-centered static-backdrop data-name="responsable">
-    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable">
+    <x-adminlte-card theme="dark" class="mt-4 elevation-3" id="card-datatable-respon">
         <table class="table yajra-datatable-responsable table-bordered" style="padding-top:10px;width:100%;">
             <thead style="width: 100%;">
                 <tr style="width: 100%;">

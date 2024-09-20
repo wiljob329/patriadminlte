@@ -80,7 +80,7 @@ export function fillOptionSelect(select, afterUrl) {
 //funcion para chequear y colocar datos en el formulario
 export function fillForm(data, condicion, visual, uris) {
     $("#codigo" + (visual === "show" ? visual : ""))
-        .val(data.codigo)
+        .val(data.codigo_interno)
         .attr("disabled", condicion);
     $("#modelo" + (visual === "show" ? visual : ""))
         .val(data.modelo)
@@ -96,39 +96,39 @@ export function fillForm(data, condicion, visual, uris) {
         .attr("disabled", condicion);
     if (condicion) {
         $("#adquisicion" + (visual === "show" ? visual : ""))
-            .val(data.actadquisicione.descripcion)
+            .val(data.forma_adquisicion.adquisicion)
             .attr("disabled", condicion);
         $("#tipo" + (visual === "show" ? visual : ""))
-            .val(data.act_tipo.nombre)
+            .val(data.tipo_activo.tipo)
             .attr("disabled", condicion);
         $("#condicion" + (visual === "show" ? visual : ""))
-            .val(data.act_condicion.nombre)
+            .val(data.condicion_fisica.condicion)
             .attr("disabled", condicion);
         $("#color" + (visual === "show" ? visual : ""))
-            .val(data.act_color.descripcion)
+            .val(data.color.color)
             .attr("disabled", condicion);
         $("#marca" + (visual === "show" ? visual : ""))
-            .val(data.act_marca.nombre)
+            .val(data.marca.marca)
             .attr("disabled", condicion);
     } else {
-        fillSelect(
+        fillOptionSelect(
             $("#adquisicion" + (visual === "show" ? visual : "")),
             uris.adquisicionurl,
         );
-        fillSelect(
+        fillOptionSelect(
             $("#color" + (visual === "show" ? visual : "")),
             uris.colorurl,
         );
 
-        fillSelect2(
+        fillOptionSelect(
             $("#marca" + (visual === "show" ? visual : "")),
             uris.marcaurl,
         );
-        fillSelect2(
+        fillOptionSelect(
             $("#tipo" + (visual === "show" ? visual : "")),
             uris.tipourl,
         );
-        fillSelect2(
+        fillOptionSelect(
             $("#condicion" + (visual === "show" ? visual : "")),
             uris.condicionurl,
         );
@@ -137,19 +137,21 @@ export function fillForm(data, condicion, visual, uris) {
         .val(data.fecha_adquisicion)
         .attr("disabled", condicion);
     $("#moneda" + (visual === "show" ? visual : ""))
-        .val(data.moneda)
+        // .val(data.moneda)
+        .val("BS")
         .attr("disabled", condicion);
     $("#proveedor" + (visual === "show" ? visual : ""))
         .val(data.proveedor)
         .attr("disabled", condicion);
     $("#nro_factura" + (visual === "show" ? visual : ""))
-        .val(data.nro_factura)
+        .val(data.nro_documento_factura)
         .attr("disabled", condicion);
     $("#costo" + (visual === "show" ? visual : ""))
-        .val(data.costo)
+        // .val(data.costo)
+        .val("2222")
         .attr("disabled", condicion);
     $("#nro_orden" + (visual === "show" ? visual : ""))
-        .val(data.nro_orden)
+        .val(data.nro_orden_pago)
         .attr("disabled", condicion);
     $("#inicio_garantia" + (visual === "show" ? visual : ""))
         .val(data.inicio_garantia)
@@ -158,13 +160,13 @@ export function fillForm(data, condicion, visual, uris) {
         .val(data.fin_garantia)
         .attr("disabled", condicion);
     $("#categoriaesp" + (visual === "show" ? visual : ""))
-        .val(data.categoriaesp_id)
+        .val(data.categoria_especifica.nombre)
         .attr("disabled", condicion);
     $("#asignado" + (visual === "show" ? visual : ""))
-        .val(data.asignado)
+        .val("Si")
         .attr("disabled", condicion);
     $("#estado" + (visual === "show" ? visual : ""))
-        .val(data.estado)
+        .val(data.estado_activo.estado)
         .attr("disabled", condicion);
 }
 

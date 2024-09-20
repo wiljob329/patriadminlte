@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activo;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
+//use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
 
 class ActivosController extends Controller
@@ -15,7 +15,19 @@ class ActivosController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Activo::all();
+            $data = Activo::query()->with(
+                'categoriaEspecifica.subCategoria.categoriaGeneral',
+                'color',
+                'condicionFisica',
+                'estadoActivo',
+                'formaAdquisicion',
+                'marca',
+                'responsable',
+                'sede',
+                'tipoActivo',
+                'ubicacion',
+                'unidadAdministrativa',
+            );
 
             return DataTables::of($data)
                 ->setRowId('id')
@@ -36,8 +48,8 @@ class ActivosController extends Controller
                     $editButton = '<a href="javascript:void(0)" id="editActivo"  data-url="'.route('activos.show', [$row->id]).'"  class="btn btn-xs btn-default text-primary mx-1 shadow"><i class="fa fa-lg fa-fw fa-pen"></i></a>';
                     $btn .= $editButton;
                     $btn .= $deleteButton;
-                    $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'.route('activos.show', [$row->id]).'"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
-                    $btn .= $showButton.'</nobr>';
+                    // $showButton = '<a href="javascript:void(0)" id="showActivo"  data-url="'.route('activos.show', [$row->id]).'"  class="btn btn-xs btn-default text-warning mx-1 shadow"><i class="fa fa-lg fa-fw fa-eye"></i></a>';
+                    // $btn .= $showButton.'</nobr>';
 
                     return $btn;
                 })

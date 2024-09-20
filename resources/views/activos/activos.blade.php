@@ -13,7 +13,9 @@
                     <a href="{{ route('activos.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar
                         Activo</a>
                 </x-slot>
-                <table class="table yajra-datatable table-bordered" style="padding-top:10px;">
+
+
+                <table class="table yajra-datatable table-bordered table-hover" style="padding-top:10px;">
                     <thead class="">
                         <tr>
                             <th>Codigo</th>
@@ -25,8 +27,6 @@
                             <th>Serial</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    </tbody>
                 </table>
             </x-adminlte-card>
         </div>

@@ -9,7 +9,7 @@ export const activoOpt = {
                 {
                     extend: "pdfHtml5",
                     orientation: "landscape",
-                    pageSize: "LEGAL",
+                    pageSize: "LETTER",
                     download: "open",
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 6],
