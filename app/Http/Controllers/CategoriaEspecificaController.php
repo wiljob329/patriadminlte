@@ -12,7 +12,7 @@ class CategoriaEspecificaController extends Controller
 
     public function index(Request $request)
     {
-        $categoriaEspecifica = CategoriaEspecifica::query();
+        $categoriaEspecifica = CategoriaEspecifica::query()->with('subCategoria.categoriaGeneral');
 
         return DataTables::of($categoriaEspecifica)
             ->addIndexColumn()

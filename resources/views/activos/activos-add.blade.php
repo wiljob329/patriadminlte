@@ -23,14 +23,15 @@
 
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="card-create" role="tabpanel" aria-labelledby="activo-tab">
-                    <x-adminlte-card title="Creacion de Activo" theme="dark" class="mx-auto elevation-3 w-75">
+                    <x-adminlte-card title="Creacion de Activo" theme="dark" class="mx-auto elevation-3 w-100">
                         <x-slot name="toolsSlot">
                             <a href="{{ route('activos.index') }}" class="btn btn-warning btn-sm"><i
                                     class="fas fa-undo"></i>
                                 Volver
                             </a>
                         </x-slot>
-                        <x-form.activo-form action="{{ route('activos.store') }}" id="activo_save" method="POST" create />
+                        <x-form.activo-form action="{{ route('activos.store') }}" id="activo_save" class="mt-4"
+                            method="POST" create />
                         <x-slot name="footerSlot">
                             <x-adminlte-button id="activo_submit" form="activo_save" class="ml-auto d-flex" theme="primary"
                                 label="Guardar" icon="fas fa-lg fa-save" type="submit" />
@@ -70,4 +71,14 @@
     <script src={{ asset('js/datatables.min.js') }}></script>
     <script src={{ asset('js/dataTables.buttons.js') }}></script>
     <script src={{ asset('js/buttons.bootstrap4.js') }}></script>
+    <script>
+        $(document).ready(function() {
+            $("#info_financiera").on("click", function() {
+                $('#detalle_financiera').fadeToggle(200);
+                $('#info_financiera_icon').toggleClass('fa-caret-right fa-caret-down');
+                {{-- var optional_info_open = $('#optional_info_icon').hasClass('fa-caret-down'); --}}
+                {{-- document.cookie = "optional_info_open=" + optional_info_open + '; path=/'; --}}
+            });
+        })
+    </script>
 @stop

@@ -72,7 +72,7 @@ export const marcaOptUrl = (url) => {
     };
 };
 
-export const categoriaEspecificaOptUrl = (url) => {
+export const categoriaEspecificaOptUrl = (url, cat = "") => {
     return {
         processing: true,
         layout: {
@@ -87,7 +87,36 @@ export const categoriaEspecificaOptUrl = (url) => {
         responsive: true,
         selected: true,
         ajax: url,
-        columns: [{ data: "nombre" }, { data: "codigo" }],
+        order: [[3, "asc"]],
+        search: {
+            search: cat,
+        },
+        columns: [
+            {
+                data: "sub_categoria.categoria_general.nombre",
+                render: function (data, type, row) {
+                    return data.replace(/_/g, " ");
+                },
+            },
+            {
+                data: "sub_categoria.nombre",
+                render: function (data, type, row) {
+                    return data.replace(/_/g, " ");
+                },
+            },
+            { data: "nombre" },
+            { data: "codigo" },
+        ],
+        columnDefs: [
+            {
+                className: "dt-center",
+                targets: [0, 1, 2, 3],
+            },
+            {
+                className: "dt-body-center",
+                targets: [0, 1, 2, 3],
+            },
+        ],
     };
 };
 
@@ -110,10 +139,12 @@ export const responsablesActivosOptUrl = (url, respon = "") => {
             search: respon,
         },
         columns: [
-            { data: "responsable" },
-            { data: "cargo" },
-            { data: "division" },
-            { data: "gerencia" },
+            {
+                data: "responsable",
+            },
+            { data: "cargo.cargo" },
+            { data: "division.division" },
+            { data: "division.gerencia.gerencia" },
         ],
     };
 };
