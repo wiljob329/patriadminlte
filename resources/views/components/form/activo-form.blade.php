@@ -180,7 +180,7 @@
             <div class="col-sm-8 offset-sm-3">
                 <a id="info_financiera" class="text-primary">
                     <i class="fa fa-caret-right" id="info_financiera_icon"></i>
-                    <strong>Informacion financiera</strong>
+                    <strong>Información financiera</strong>
                 </a>
             </div>
         </div>
@@ -192,34 +192,20 @@
             @include('partials.forms.create.orden')
             @include('partials.forms.create.fechaAdquisicion')
         </div>
-        <div class="form-row">
-            <x-adminlte-input type="text" label="Observaciones" name="observacion" fgroup-class="col"
-                placeholder="Observaciones" id="observacion" />
+        <div class="form-group">
+            <div class="col-sm-8 offset-sm-3">
+                <a id="info_adicional" class="text-primary">
+                    <i class="fa fa-caret-right" id="info_adicional_icon"></i>
+                    <strong>Información Adicional</strong>
+                </a>
+            </div>
         </div>
-
-        <div class="form-row">
-            <x-adminlte-input-date name="inicio_garantia" label="Inicio Garantia" :config="$config"
-                placeholder="Inicio Garantia" id="inicio_garantia" fgroup-class="col">
-                <x-slot name="appendSlot">
-                    <div class="input-group-text bg-gradient-primary">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                </x-slot>
-            </x-adminlte-input-date>
-            <x-adminlte-input-date name="fin_garantia" label="Fin Garantia" :config="$config" placeholder="Fin Garantia"
-                id="fin_garantia" fgroup-class="col">
-                <x-slot name="appendSlot">
-                    <div class="input-group-text bg-gradient-primary">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                </x-slot>
-            </x-adminlte-input-date>
-        </div>
-        <div class="form-row">
-            <x-adminlte-select type="text" label="Color" name="color_id" fgroup-class="col" placeholder="Color"
-                id="color" />
-            <x-adminlte-select type="text" label="Tipo" name="tipo_id" fgroup-class="col" placeholder="Tipo"
-                id="tipo" />
+        <div id='detalle_adicional' class="px-0 col-md-12" style="display:none">
+            @include('partials.forms.create.observaciones')
+            @include('partials.forms.create.inicioGarantia')
+            @include('partials.forms.create.finGarantia')
+            @include('partials.forms.create.color')
+            @include('partials.forms.create.tipo')
         </div>
     @endisset
     @isset($vehiculo)

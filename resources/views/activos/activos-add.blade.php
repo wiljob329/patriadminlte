@@ -21,7 +21,7 @@
                 </li>
             </ul>
 
-            <div class="tab-content" id="myTabContent">
+            <div class="tab-content" id="myTabContent" style="width:60%;">
                 <div class="tab-pane fade show active" id="card-create" role="tabpanel" aria-labelledby="activo-tab">
                     <x-adminlte-card title="Creacion de Activo" theme="dark" class="mx-auto elevation-3 w-100">
                         <x-slot name="toolsSlot">
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="card-create-vehiculo" role="tabpanel" aria-labelledby="activov-tab">
-                    <x-adminlte-card title="Creacion de Activo Vehiculo" theme="dark" class="mx-auto elevation-3 w-75">
+                    <x-adminlte-card title="Creacion de Activo Vehiculo" theme="dark" class="mx-auto elevation-3 w-100">
                         <x-slot name="toolsSlot">
                             <a href="{{ route('activos.index') }}" class="btn btn-warning btn-sm"><i
                                     class="fas fa-undo"></i>
@@ -76,6 +76,12 @@
             $("#info_financiera").on("click", function() {
                 $('#detalle_financiera').fadeToggle(200);
                 $('#info_financiera_icon').toggleClass('fa-caret-right fa-caret-down');
+                {{-- var optional_info_open = $('#optional_info_icon').hasClass('fa-caret-down'); --}}
+                {{-- document.cookie = "optional_info_open=" + optional_info_open + '; path=/'; --}}
+            });
+            $("#info_adicional").on("click", function() {
+                $('#detalle_adicional').fadeToggle(200);
+                $('#info_adicional_icon').toggleClass('fa-caret-right fa-caret-down');
                 {{-- var optional_info_open = $('#optional_info_icon').hasClass('fa-caret-down'); --}}
                 {{-- document.cookie = "optional_info_open=" + optional_info_open + '; path=/'; --}}
             });
