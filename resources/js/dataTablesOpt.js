@@ -148,3 +148,19 @@ export const responsablesActivosOptUrl = (url, respon = "") => {
         ],
     };
 };
+
+export const ubicacionOptUrl = (url, ubi = "") => {
+    return {
+        processing: true,
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        search: {
+            search: ubi,
+        },
+        responsive: true,
+        selected: true,
+        ajax: url,
+        columns: [{ data: "nombre" }, { data: "sede.sede" }],
+    };
+};

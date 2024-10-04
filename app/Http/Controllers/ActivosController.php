@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ActivoRequest;
 use App\Models\Activo;
+use App\Models\Color;
+use App\Models\CondicionFisica;
+use App\Models\EstadoActivo;
+use App\Models\FormaAdquisicion;
 use Illuminate\Http\Request;
 //use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
@@ -68,13 +73,18 @@ class ActivosController extends Controller
     public function create()
     {
         //
-        return view('activos.activos-add');
+        $estados = EstadoActivo::all();
+        $condiciones = CondicionFisica::all();
+        $adquisiciones = FormaAdquisicion::all();
+        $colores = Color::all();
+
+        return view('activos.activos-add', compact('estados', 'condiciones', 'adquisiciones', 'colores'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ActivoRequest $request)
     {
         //
         return dd($request);

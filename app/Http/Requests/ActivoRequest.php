@@ -22,9 +22,11 @@ class ActivoRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'codigo.required' => 'El código es obligatorio',
-            'marca.required' => 'La marca es obligatorio',
-            'modelo.required' => 'El modelo es obligatorio',
+            // 'codigo.required' => 'El código es obligatorio',
+            // 'marca.required' => 'La marca es obligatorio',
+            // 'modelo.required' => 'El modelo es obligatorio',
+            'required' => 'El campo es obligatorio!',
+            'unique' => 'El dato ya existe!',
         ];
     }
 
@@ -38,9 +40,17 @@ class ActivoRequest extends FormRequest
         return [
             //
             // '*' => 'required|max:15'
-            'codigo' => 'required|unique:activos|max:15',
-            'marca' => 'required|unique:activos|max:15',
-            'modelo' => 'required',
+            'codigo' => 'required|unique:activos,codigo_interno|max:15',
+            'ubicacion' => 'required',
+            'categoriaesp' => 'required',
+            'responsable' => 'required',
+            'estado' => 'required',
+            'condicion' => 'required',
         ];
     }
+
+    // public function response(array $errors)
+    // {
+    //     return $this->redirector->back()->withInput()->withErrors($errors, $this->errorBag);
+    // }
 }

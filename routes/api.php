@@ -8,6 +8,7 @@ use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\FormaAdquisicionController;
 use App\Http\Controllers\MonedaController;
 use App\Http\Controllers\TipoActivoController;
+use App\Http\Controllers\UbicacionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,4 @@ Route::get('/color', [ColorController::class, 'index']);
 Route::get('/desincorporacion', [ActDesincorporacionController::class, 'index']);
 Route::get('/estado', [EstadoController::class, 'index']);
 Route::get('/monedas', [MonedaController::class, 'index']);
+Route::get('/ubicacion', [UbicacionController::class, 'index']);

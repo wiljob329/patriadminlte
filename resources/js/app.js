@@ -6,13 +6,14 @@ import {
     categoriaEspecificaOptUrl,
     marcaOptUrl,
     responsablesActivosOptUrl,
+    ubicacionOptUrl,
 } from "./dataTablesOpt";
 import { dataTableActivoSet } from "./dataTableActivoSet";
 import { dataTableMarcaSet } from "./dataTableMarcaSet";
 import { modalSet } from "./modalSet";
 import { dataTableCategoriaSet } from "./dataTableCategoriaSet";
 import { dataTableResponSet } from "./dataTableResponSet";
-
+import { dataTableUbicacionSet } from "./dataTableUbicacionSet.js";
 //import Alpine from 'alpinejs';
 
 const Uris = {
@@ -25,10 +26,12 @@ const Uris = {
     monedaurl: "/monedas",
     catespecifica: "/categoriaespecificas",
     responsables: "/responsables",
+    ubicacion: "/api/ubicacion",
 };
 const createMarcaInput = $("#marca");
 const createCategoriaEspInput = $("#categoriaesp");
 const createResponsableInput = $("#responsable");
+const createUbicacionInput = $("#ubicacion");
 
 $(function () {
     const card = document.querySelector("#card-datatable");
@@ -38,24 +41,12 @@ $(function () {
         dataTableActivoSet($(".yajra-datatable"), activoOpt, Uris);
     }
     if (isInViewport(createc)) {
-        fillOptionSelect($("#adquisicion"), Uris.adquisicionurl);
-        fillOptionSelect($("#condicion"), Uris.condicionurl);
+        // fillOptionSelect($("#adquisicion"), Uris.adquisicionurl);
+        // fillOptionSelect($("#condicion"), Uris.condicionurl);
         fillOptionSelect($("#color"), Uris.colorurl);
-        fillOptionSelect($("#estado"), Uris.estadourl);
+        // fillOptionSelect($("#estado"), Uris.estadourl);
         fillOptionSelect($("#tipo"), Uris.tipourl);
-        fillOptionSelect($("#moneda"), Uris.monedaurl);
-        $("#myTab button").on("shown.bs.tab", (e) => {
-            e.target.classList.add("bg-primary");
-            e.relatedTarget.classList.remove("bg-primary");
-            if (e.target.dataset.target === "#card-create-vehiculo") {
-                fillOptionSelect($("#adquisicion-vehi"), Uris.adquisicionurl);
-                fillOptionSelect($("#condicion-vehi"), Uris.condicionurl);
-                fillOptionSelect($("#color-vehi"), Uris.colorurl);
-                fillOptionSelect($("#estado-vehi"), Uris.estadourl);
-                fillOptionSelect($("#tipo-vehi"), Uris.tipourl);
-                fillOptionSelect($("#moneda-vehi"), Uris.monedaurl);
-            }
-        });
+        // fillOptionSelect($("#moneda"), Uris.monedaurl);
         modalSet(
             $("#marcaModal"),
             Uris.marcaurl,
@@ -67,6 +58,14 @@ $(function () {
         // $("#marca").replaceWith(
         //     "<input id='' class='form-control' name='marca' value='' type='text' placeholder='marca' >",
         // );
+        modalSet(
+            $("#ubicacionModal"),
+            Uris.ubicacion,
+            $(".datatable-ubicacion"),
+            ubicacionOptUrl,
+            dataTableUbicacionSet,
+            createUbicacionInput,
+        );
         modalSet(
             $("#categoriaModal"),
             Uris.catespecifica,

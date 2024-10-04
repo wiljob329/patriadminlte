@@ -4,62 +4,21 @@
 
 @section('content_header')
 @stop
-
 @section('content')
-    <div class="container-fluid">
-        <div class="row flex-column align-items-center">
-            <ul class="mt-4 nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link bg-primary active" id="activo-tab" data-toggle="tab" data-target="#card-create"
-                        type="button" role="tab" aria-controls="card-create" aria-selected="true">Activo
-                        Normal</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="activov-tab" data-toggle="tab" data-target="#card-create-vehiculo"
-                        type="button" role="tab" aria-controls="card-create-vehiculo" aria-selected="false">Activo
-                        Vehiculo</button>
-                </li>
-            </ul>
-
-            <div class="tab-content" id="myTabContent" style="width:60%;">
-                <div class="tab-pane fade show active" id="card-create" role="tabpanel" aria-labelledby="activo-tab">
-                    <x-adminlte-card title="Creacion de Activo" theme="dark" class="mx-auto elevation-3 w-100">
-                        <x-slot name="toolsSlot">
-                            <a href="{{ route('activos.index') }}" class="btn btn-warning btn-sm"><i
-                                    class="fas fa-undo"></i>
-                                Volver
-                            </a>
-                        </x-slot>
-                        <x-form.activo-form action="{{ route('activos.store') }}" id="activo_save" class="mt-4"
-                            method="POST" create />
-                        <x-slot name="footerSlot">
-                            <x-adminlte-button id="activo_submit" form="activo_save" class="ml-auto d-flex" theme="primary"
-                                label="Guardar" icon="fas fa-lg fa-save" type="submit" />
-                        </x-slot>
-                    </x-adminlte-card>
-                </div>
-
-                <div class="tab-pane fade" id="card-create-vehiculo" role="tabpanel" aria-labelledby="activov-tab">
-                    <x-adminlte-card title="Creacion de Activo Vehiculo" theme="dark" class="mx-auto elevation-3 w-100">
-                        <x-slot name="toolsSlot">
-                            <a href="{{ route('activos.index') }}" class="btn btn-warning btn-sm"><i
-                                    class="fas fa-undo"></i>
-                                Volver
-                            </a>
-                        </x-slot>
-                        <x-form.activo-form action="{{ route('activos.store') }}" id="activo_save" method="POST"
-                            vehiculo />
-                        <x-slot name="footerSlot">
-                            <x-adminlte-button id="activo_submit" form="activo_save" class="ml-auto d-flex" theme="primary"
-                                label="Guardar" icon="fas fa-lg fa-save" type="submit" />
-                        </x-slot>
-                    </x-adminlte-card>
-                </div>
-
-            </div>
-
-
-        </div>
+    <div class="row flex-column align-items-center">
+        <x-adminlte-card id="card-create" title="Creacion de Activo" theme="dark" class="mx-auto mt-4 elevation-3 w-75">
+            <x-slot name="toolsSlot">
+                <a href="{{ route('activos.index') }}" class="btn btn-warning btn-sm"><i class="fas fa-undo"></i>
+                    Volver
+                </a>
+            </x-slot>
+            <x-form.activo-form action="{{ route('activos.store') }}" id="activo_save" class="mt-4" method="POST" create
+                :$estados :$condiciones :$adquisiciones :$colores />
+            <x-slot name="footerSlot">
+                <x-adminlte-button id="activo_submit" form="activo_save" class="ml-auto d-flex" theme="primary"
+                    label="Guardar" icon="fas fa-lg fa-save" type="submit" />
+            </x-slot>
+        </x-adminlte-card>
     </div>
 @stop
 @section('css')
@@ -82,6 +41,12 @@
             $("#info_adicional").on("click", function() {
                 $('#detalle_adicional').fadeToggle(200);
                 $('#info_adicional_icon').toggleClass('fa-caret-right fa-caret-down');
+                {{-- var optional_info_open = $('#optional_info_icon').hasClass('fa-caret-down'); --}}
+                {{-- document.cookie = "optional_info_open=" + optional_info_open + '; path=/'; --}}
+            });
+            $("#info_vehicular").on("click", function() {
+                $('#detalle_vehicular').fadeToggle(200);
+                $('#info_vehicular_icon').toggleClass('fa-caret-right fa-caret-down');
                 {{-- var optional_info_open = $('#optional_info_icon').hasClass('fa-caret-down'); --}}
                 {{-- document.cookie = "optional_info_open=" + optional_info_open + '; path=/'; --}}
             });

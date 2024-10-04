@@ -9,8 +9,7 @@
 @section('input_group_item')
 
     {{-- Select --}}
-    <select id="{{ $id }}" name="{{ $name }}"
-        {{ $attributes->merge(['class' => $makeItemClass()]) }}>
+    <select id="{{ $id }}" name="{{ $name }}" {{ $attributes->merge(['class' => $makeItemClass()]) }}>
         {{ $slot }}
     </select>
 
@@ -18,21 +17,20 @@
 
 {{-- Support to auto select the old submitted values --}}
 
-@if($errors->any() && $enableOldSupport)
-@push('js')
-<script>
+@if ($errors->any() && $enableOldSupport)
+    @push('js')
+        <script>
+            $(() => {
 
-    $(() => {
+                let oldOptions = @json(collect($getOldValue($errorKey)));
+                console.log(oldOptions)
 
-        let oldOptions = @json(collect($getOldValue($errorKey)));
-
-        $('#{{ $id }} option').each(function()
-        {
-            let value = $(this).val() || $(this).text();
-            $(this).prop('selected', oldOptions.includes(value));
-        });
-    });
-
-</script>
-@endpush
+                $('#{{ $id }} option').each(function() {
+                    let value = $(this).val() || $(this).text();
+                    $(this).prop('selected', oldOptions.includes(value));
+                    console.log(oldOptions.includes(value))
+                });
+            });
+        </script>
+    @endpush
 @endif

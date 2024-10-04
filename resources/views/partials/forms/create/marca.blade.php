@@ -1,4 +1,4 @@
-<div class="form-group row">
+<div class="form-row">
     <label for="marca" class="flex-row-reverse col-sm-3 col-form-label d-flex">Marca</label>
     <x-adminlte-input type="text" name="marca" fgroup-class="col-sm-8" placeholder="Marca" id="marca">
         <x-slot name="prependSlot">
