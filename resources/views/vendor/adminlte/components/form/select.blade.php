@@ -23,12 +23,10 @@
             $(() => {
 
                 let oldOptions = @json(collect($getOldValue($errorKey)));
-                console.log(oldOptions)
 
                 $('#{{ $id }} option').each(function() {
                     let value = $(this).val() || $(this).text();
                     $(this).prop('selected', oldOptions.includes(value));
-                    console.log(oldOptions.includes(value))
                 });
             });
         </script>
